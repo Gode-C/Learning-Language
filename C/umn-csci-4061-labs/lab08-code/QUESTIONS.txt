@@ -1,0 +1,111 @@
+                           __________________
+
+                            LAB 08 QUESTIONS
+                           __________________
+
+
+- Name: Cyrus Chen
+- NetID: chen3736
+
+Answer the questions below according to the lab specification. Write
+your answers directly in this text file and submit it to complete Lab01.
+
+
+PROBLEM 1 `server_em.c'
+=======================
+
+A
+~
+
+    The requests FIFO are the first general look up for new messages from
+    the client side, first writing by clients. 
+    
+    Data is just used to transfer data, writing by the server.
+    
+    The completion is used to mark the completion status of the whole process,
+    writing by clients. When the server receive this, the whole process is done.
+
+B
+~
+
+
+
+    The server signal the client using kill with SIGCONT to allowes the process to continue.
+
+C
+~
+
+  How many clients have information on each of the FIFOs:
+  - On the Request FIFO?
+  - On the Completion FIFO?
+  - On the Data FIFO?
+
+    Only the client which currently working with the server have information to
+    those FIFOs.
+     
+
+
+
+PROBLEM 2 `client_em.c'
+=======================
+
+
+
+A
+~
+
+
+   interrupt-driven waiting, It allows a 1 sec break between each checking.
+
+B
+~
+
+
+
+    the old while() loop is way faster than the nwe one. The old one take about
+    0.3 sec, and new one takes about 3.5 sec.
+
+    Because the busy-waiting keeps checking on the status and that's more
+    expensive, doing way more checking on the status, so it uses more time.
+    
+
+PROBLEM 3 Protocol
+==================
+
+A
+~
+
+  Describe the overall protocol used by the client and server to
+  communicate. Use the labels in the messages like `C SERVER' and `B
+  CLIENT' to help you organize the order what happens when and things
+  can happen in an unpredictable order.
+
+    A CLIENT send request
+    B SERVER received request
+    B CLIENT stopping
+    B SERVER filling request
+    B SERVER signaling client
+    B CLIENT signalled to continue
+    C CLIENT received response
+    D CLIENT indicating completion
+    E SERVER completion
+
+B
+~
+
+    The raise(SIGSTOP) could break the protocol to cause the system to stuck,
+    if the SIGCONT send by the system is received before the raise(SIGSTOP).
+    This way the client will pause forever since the server only single the
+    client once.
+    
+    The client receive the SIGCONT will do nothing, then it will pause for
+    reise(SITSTOP), and wait for the server's singel. The server already
+    signeled, and it will be waiting for the completion from the client,
+    server and client will just wait for each other, the whole system is at
+    pause.
+    
+    
+
+
+
+

@@ -1,0 +1,6 @@
+(defn addup[a] (if (= a 1) 1 (+ a (addup (- a 1)))))
+
+(defn addrange[a b] (if (= b a) a (+ a (addrange (+ a 1) b))))
+
+(defn addthree[a] (if (= a 1) 0 (if (= (mod a 3) 0) (+ a (addthree (- a 1))) (addthree (- a 1)))))
+

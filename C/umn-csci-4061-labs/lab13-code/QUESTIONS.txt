@@ -1,0 +1,100 @@
+                           __________________
+
+                            LAB 13 QUESTIONS
+                           __________________
+
+
+- Name: Cyrus Chen
+- NetID: chen3736
+
+Answer the questions below according to the lab specification. Write
+your answers directly in this text file and submit it to complete Lab01.
+
+
+Problem 1 `http-get.c'
+======================
+
+  Examine the source code for `http-get.c' and use it to contact a few
+  hosts and files such as those shown at the top of the source.  Answer
+  the following questions.
+
+
+A
+~
+
+  - What is the full name of the that protocol is being employed?
+  - Which port does the server listen on in this protocol?
+
+    
+    http = http
+    port = 80
+
+
+B
+~
+
+  Describe which system calls are used to find an internet address,
+  create a socket, and connect the socket to the found address.
+
+    find internet address:
+        getaddrinfo()
+    creat socket:
+        socket()
+    connect socket
+        connect()
+
+
+C
+~
+
+  In this protocol, which entity, SERVER or CLIENT, sends data first?
+  (Though you don't have access to a server code, this should be obvious
+  from the structure of the client code).
+
+
+    client send data first
+
+D
+~
+
+  Does the protocol work in plain text (human readable) or in binary
+  format (harder for humans to read directly).  Show examples/evidence
+  to support your answer.
+
+    plain text,
+    we can read it when it print the response.
+    Header also tells by: Content-Type: text/plain
+
+    
+E
+~
+
+  Many protocols use /headers/ which are meant to convey information
+  between the communication programs about the state of the
+  communication but are NOT data that a program user would be interested
+  in.  Show a few headers which appear in communication and describe
+  what you infer their meaning to be.
+
+    source port number and destination port number is included in the header.
+    protocol, date, content-length are also showing in the header. They are
+    pretty much means by their name.
+
+F
+~
+
+  Attempting to hunt down the actual homepage for the UMN via
+  ,----
+  | ./http-get twin-cities.umn.edu /
+  `----
+  will produce an interesting conundrum: the address to be contacted to
+  retrieve the file uses a DIFFERENT PROTOCOL.
+
+  Identify this other protocol, the port its servers use, and why it
+  would be much more complex to write a client to use it.
+  
+  protocol=https
+  port=443
+  encrypt the messages send and recieve by client and server.
+  
+  
+  

@@ -1,0 +1,215 @@
+
+<!-- saved from url=(0070)http://www-users.cselabs.umn.edu/classes/Spring-2016/csci2041/hw7.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>CSci 2041: Advanced Programming Principles</title>
+<link rel="stylesheet" type="text/css" href="./hw7_files/class.css">
+</head>
+
+<body>
+<title> CSci 2014 - Homework 7</title>
+
+
+<h1> Homework 7 -- due Wednesday April 27 </h1>
+
+<h4> Important reminders</h4>
+<ul>
+<li> You need to write your code into a file and upload the file.
+You can read your code from a file into clojure by using (load-file
+"myfile.clj"), where myfile.clj is the name of your file and your file is in
+the directory from which you start clojure.
+The TAs will run your code on additional test cases.
+
+</li><li> Use the following convention for the name of the file you will
+submit:  start with the word "sec" followed by
+the non-zero part of your section number, followed by -, and
+the homework number.  For instance, for this homework,
+if you are in section 002 you will use 
+<code>sec2-hw6.clj</code>.
+Do not include your name. When assignments are dowloaded from
+Moodle your name is added to the front of the file name you used.
+
+</li><li> Submit ONLY plain text files. Make sure the file you submit can be loaded
+in clojure with no errors if you want to receive any credit. Use exactly
+the names we specify for the functions with the same arguments.
+You do not need to submit results of running your program.
+</li></ul>
+
+<h4> Introduction to Quil</h4>
+
+We will be using the Quil library for the graphics portion of this course, which is built on the program Processing for use in Clojure.  Because the lab machines are running a much older version of Clojure, which doesn't support the graphics library, you will be completing the graphics questions in an online REPL.
+A Quil sketch (program) has three main components: the setup and draw functions, and the sketch (where everything is drawn).  They are always in that order in the program, due to Clojures evaluation constraints.
+<ul>
+<li> The setup function is only ever called once, at the start of the program.  In it, you set the values for attributes like the frame-rate, background color, color mode, etc.  You can also put initial values for state variables here.
+</li><li> The draw function is the part that does the majority of the work.  It is called right after the setup function is completed, and then it is called repeatedly after that (at the frame-rate set in the set-up) until you stop it (usually by closing the sketch).
+</li><li> The sketch (created using the defsketch macro), is the window
+in which everything is drawn.  When you create it, you set the size
+and title of the window (among other attributes), the functions to be
+used for setup and draw, and the functions to be used for mouse and
+keyboard events.  The full list of options for defsketch can be found
+at <a href="http://quil.info/api/environment#defsketch%3Ehttp://quil.info/api/environment#defsketch%3C/a%3E,and%20further%20information%20about%20all%20Quil%20functions%20can%20be%20found%20at%20%3Ca%20href=" http:="" quil.info="" api"="">http://quil.info/api</a>
+<font color="red"> look at 
+<a href="https://nbeloglazov.com/2014/05/29/quil-intro.html">
+https://nbeloglazov.com/2014/05/29/quil-intro.html</a> for some more
+documentation.</font>
+</li><li><font color="red">
+To debug your program you might find it useful to use
+<tt>(q/prc-println item)</tt> which will print the item at the bottom of the
+sketch window. The function takes one argument, which could be a vector or
+a list or whatever you want.
+</font></li><li><font color="red"> To write text at a fixed position in the sketch window use 
+<tt>(q/text stringitem xcoord ycoord)</tt> where stringitem is the string you want 
+to print at xcoord, ycoord.
+</font></li><li><font color="red"> Before you use a key from the keyboard, you need to ckick with the mouse in 
+sketch window.
+</font>
+</li></ul>
+
+<h4> What to do</h4>
+
+The overall goal of this assignment is to make a simple game in which 20 or more objects 
+are moving about and interacting within a 500x500 canvas.  You need to create one object 
+controlled by the mouse or keyboard.  The first few problems will help you build 
+the framework for the game, but the final rules and objective of the game will be 
+up to you, though we will give you some suggestions.
+
+<ol>
+<li> You will use the online sketch program at 
+<a href="http://quil.info/sketches/create">http://quil.info/sketches/create</a>
+to code and test your programs.  
+</li><li> Setup.
+We've provided a basic setup for your circle game to get you started.  
+<br> Get the file "hw7-start.clj" from github using <git pull=""> in the directory where 
+you have been keeping your working copies of files from github.
+<font color="red"> There is a new file you can get from git "hw7-part.clj" 
+where the error in the original update-circles has been fixed.
+</font>
+<br> Open the file, select everything, and copy it.  Now open 
+<a href="http://quil.info/sketches/create">http://quil.info/sketches/create</a>
+in your web browser, remove the example code that's there, and paste in the code
+from the file.  It is functional as is, and gives you some examples of how 
+things work.  Read through the code and the documentation to understand what 
+is going on.  You'll be modifying and adding to this code for the assignment.
+</git></li><li>
+Movement [45 points total]
+<br>
+We've built speed and heading into the circle instances for you, but you 
+need to use them to make the circles move.
+<ol>
+<li> [20 points] Write the function (move-circle c state), which takes
+a circle instance and the sketch state and calculates where the circle
+would move to next (in 1/30th of a second) and changes the circle's :x
+and :y values to reflect that. 
+<font color="red"> A circle has x and y coordinates, size, etc  and a 
+heading which you can use to calculate the next position where the circle
+should move to.</font>
+</li><li>[0 points] You should remove the comment function from around the
+update-circles function.  The update-circles function will update all
+of the circles' locations for you.  You can now call it from within the
+update-state function (uncomment the line).  Running your sketch now
+should result in the circles moving in straight lines, and eventually
+ending up off the visible canvas.  We want the circles to stay in the
+visible area.  <font color="red"> If you get the new file this is already
+done.  If not, a function that works correctly is:
+<pre>(defn update-circles
+  "Moves each circle and returns updated vector of circles."
+   [circles state]
+   (map (fn [c] (move-circle c state)) circles))
+</pre>
+</font>
+Of course, to see any motion you have to write the move-circle function.
+</li><li> [<font color="red">25</font> points] Write the function 
+(bounce-back c size), which calculates
+if a circle is going to move off of the canvas.  If true, then it
+calculates the new heading (the angle at which it will bounce off the
+boundary) and updates :heading in c with the new value.  If false, then
+it does nothing.  Make sure to call this from within your move-circle
+function.  The circle might travel off the canvas on this iteration,
+but on the next one it will return at the new heading.
+<font color="red">It is up to you to decide the direction of motion after
+bouncing off. You can follow the laws of physics or invent your own laws.</font>
+</li></ol>
+</li><li> Making lots of circles [15 points total]
+<br>
+You've been working with a single circle so far, but for your game, you'll need 
+lots of circles, so you'll need to add a few things.
+<ol>
+<li> [10 points] <font color="red">Create n circles in random positions.  
+The single circle that was used in the previous file has been added to
+a list of circles, so you simply have to add more circles to that list.</font>
+</li><li> [5 points] Next, you'll need to modify the draw-state function to draw
+all the circles, rather than just one.  
+<font color="red">This is already done in the new file.  It is done by doing 
+<tt>(dorun (map draw-circle (:circles state)))</tt></font>
+At this point, you should have 20 circles bouncing around in the canvas.
+</li></ol>
+
+</li><li> Interacting with the sketch and making a game [40 points total]
+<br>
+We've placed mouse-clicked and key-pressed events in the code  for you already.  
+Clicking the mouse inside the canvas will change the background color.  
+Pressing the letter p will pause (or unpause) the update function.  But that's 
+not particularly interesting, so now it's time for you to come up with the rules 
+for your game.  
+There are three requirements for your game, as follows:
+<ol>
+<li> [10 points] There must be a scoring mechanism, and you need to display the 
+score (as text) in the upper left corner of the canvas.  Be sure it updates as 
+the score changes.
+</li><li> [25 points] You must add an object (circle, rectangle, whatever you like) 
+that is controlled either by the arrow keys or by the mouse's movements (it has 
+to be interactive).  This object is used to interact with the 20 bouncing 
+circles in some way (according to the rules of your game).
+</li><li> [5 points] Your game must start with at least 20 bouncing circles, all of 
+which can be interacted with (no choosing only one to be interactive at a time).  
+You may remove circles during the course of the game, through interactions (not 
+just due to a timer or something like that).
+Other than that, you can do what you want.  Here are a few possibilities:
+<br>
+- If a circle comes into contact with the object you control, it changes color 
+(looping through a set of colors).  If you get all the circles to be the same 
+color, you win.
+<br>
+- Make it possible for circles to "escape" through one edge of the canvas.  The 
+objective is to keep as many circles in the canvas for as long as possible (
+using your interactive object).  Game ends when there is only one circle left 
+(because otherwise it could drag on for a very long time).
+<br>
+- Avoid letting the circles hit your interactive object for a set time.  You 
+lose points/lives for every hit, until you hit 0 (you lose) or the time is up 
+(you win).
+</li></ol>
+</li><li>
+To turn in your work, please submit a .clj file that contains (as a comment) the 
+URL (use the Share button above the code at 
+<a href="http://quil.info/sketches/create">http://quil.info/sketches/create</a>
+to get this) to each sketch you create, 
+followed by a copy of your code. Provide, at the beginning of your submitted file, 
+a description of the game objective and how the game works.
+</li></ol>
+
+Extra credit [10 points]
+<ol>
+<li> [3 points]  When the game ends, it should display the text "Play again? y/n" 
+at the top center.  Typing y will cause it to reset the score and generate a new 
+vector of random circles.  Typing n will cause it to clear the canvas.
+</li><li> [7 points] Write a function that detects when two objects run into each other.
+</li></ol>
+<!-- [5 points]  Make your game have multiple "levels" that get progressivley more 
+difficult (increasing circle speed, smaller/larger interactive object, circles 
+are occasionally invisible, etc).-->
+
+
+<address>
+<font size="-1">
+<b>Comments to: </b><a href="mailto:gini@cs.umn.edu">Maria Gini</a><br>
+<font color="red">Changes and corrections are in red</font>.
+<script language="JavaScript">
+<!---//hide script from old browsers
+    document.write( "Last updated "+ document.lastModified )
+    //end hiding contents --->
+</script>Last updated 04/27/2016 21:53:00
+ </font> 
+
+
+
+</address></body></html>

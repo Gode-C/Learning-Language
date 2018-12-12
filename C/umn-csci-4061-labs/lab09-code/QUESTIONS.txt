@@ -1,0 +1,129 @@
+                           __________________
+
+                            LAB 09 QUESTIONS
+                           __________________
+
+
+- Name: Cyrus Chen
+- NetID: chen3736
+
+Answer the questions below according to the lab specification. Write
+your answers directly in this text file and submit it to complete Lab01.
+
+
+PROBLEM 1 `em_server_mq.c' and `em_server_mq.c'
+===============================================
+
+A
+~
+
+  Examine the source code for `em_server_mq.c' and
+  `em_server_mq.c'. Describe the lines of code which are used to
+  establish the message queues used for communication. How many message
+  queues are there?
+
+    key_t key;
+    key = ftok("em_server_mq.c", 0);
+    int to_server_qid = msgget(key, 0644 | IPC_CREAT);
+    key = ftok("em_client_mq.c", 0);
+    int to_clients_qid = msgget(key, 0644 | IPC_CREAT);
+    
+    There are 2 queues.
+  
+
+B
+~
+
+  Describe the sending and receiving functions used in the server to put
+  messages onto the queue. Focus your attention on the server side
+  first. Describe each argument of the send/receive functions and its
+  purpose. You may wish to consult the textbook or manual page for the
+  functions to get more information.
+
+
+    msgrcv(to_server_qid, &request, sizeof(lookup_t), 0, 0);
+    msgsnd(to_clients_qid, &request, sizeof(request), 0);
+    
+    msgrcv() used to receive messages, in this case, look for requests. It 
+    removes a message from the queue and places it in the buffer.
+    Arguments: 1. message queue
+               2. the pointer pointed to message
+               3. size of the message
+               5. specify the type to read
+               4. flags
+    
+    
+    msgsnd() used to send messages, to the clients. It appends a copy of the 
+    message given to the message queue.
+    Arguments: 1. message queue
+               2. the pointer pointed to message
+               3. size of the message
+               4. flags
+    
+    
+C
+~
+
+  Describe the protocol that appears to be used for communication. What
+  steps are taken by a client to make a request for an email address
+  lookup? How does the server respond? You may find it useful to use the
+  letters associated with print statements like "A" and "D". Note any
+  operations that might happen in an arbitrary order.
+
+    A CLIENT: sending request
+    B SERVER: received request
+    C SERVER: filling request
+    D CLIENT: received response
+    
+    The protocol is more clear than using the signels from lab8, it's step by
+    step so less error could occur. For a client to send request, it needs to 
+    connect to the message queue then send the message. The server will fill the
+    request after receiving it.
+D
+~
+
+  Recall that the previous email lookup server/client that used FIFOs
+  would answer requests on a Data FIFO. The Server would only allow one
+  Client to access the Data FIFO at a time.  This was to prevent the
+  client from retrieving data from the queue that was not intended for
+  them.
+
+  In the Message Queue server/client, potentially many clients are
+  accessing the To-Client queue simultaneously. Describe why there is
+  not a problem in this setting. Look carefully at the arguments used in
+  the `msgrcv()' call in the client.
+  
+--------------------------------A---------------------
+
+    The msgrcv() in the client is as follow:
+      msgrcv(to_clients_qid, &response, sizeof(lookup_t), my_pid, 0);
+    The 4th argument is "my_pid" and it will check for the pid in the message
+    with my_pid from the client. This way, it will not reveiving messages for
+    other clients.
+
+
+E
+~
+
+  In the FIFO server/client, sleeping and signaling was used to avoid
+  busily waiting for availability of the data. This complicated the
+  protocol somewhat in order to get more efficient resource utilization.
+
+  There is NO explicit sleeping in the Message Queue server/client which
+  might indicate it is less efficient as processes busily wait for
+  messages. Do some research on `msgsnd() / msgrcv()' calls to determine
+  if they are busy waiting (polling) or interrupt driven operations.
+
+  Confirm these answers by running `run_simulations_mq.sh' on a large
+  number of client and timing the results. A sample run might be
+  ,----
+  | > time ./run_simulation_mq.sh 1000 > ~/tmp/xxx
+  `----
+  
+  msgrcv() are blocking functions, they will put the process to sleep
+  until it got the message, ant it is interrupt driven wait.
+  the fifo is using interrupt driven wait and the message queues are faster than
+  fifo way. A busy loop will slow things down, so msgsnd() / msgrcv() can't be
+  busy wait.
+  
+  

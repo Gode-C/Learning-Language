@@ -1,0 +1,159 @@
+                           __________________
+
+                            LAB 07 QUESTIONS
+                           __________________
+
+
+- Name: Cyrus Chen
+- NetID: chen3736
+
+Answer the questions below according to the lab specification. Write
+your answers directly in this text file and submit it to complete Lab01.
+
+
+PROBLEM 1 `sleep_print.c'
+=========================
+
+A
+~
+
+ 1 : hello  1 : hello  1 : hello  1 : hello  1 : hello  1 : hello  1 : hello  1 : hello ^Csleep_print: signaled, setting flag
+ 1 : hello sleep_print: finishing
+
+
+
+
+B
+~
+
+
+    using SA_RESTART signal to restart the libaray function, then the while
+    loop will break since it has been signaled.
+
+
+
+PROBLEM 2 `read_AB.c'
+=====================
+
+  Note that `read_AB.c' uses the same techniques as `sleep_print.c' to
+  set up signal handlers and shut down on receiving a signal.
+
+
+A
+~
+
+    listening for children
+    A had: | 1 : AAAA |
+    B had: | 3 : BBBB |
+    A had: | 1 : AAAA |
+    B had: | 3 : BBBB |
+    A had: | 1 : AAAA  1 : AAAA  1 : AAAA |
+    B had: | 3 : BBBB |
+    A had: | 1 : AAAA  1 : AAAA  1 : AAAA |
+    B had: | 3 : BBBB |
+    A had: | 1 : AAAA  1 : AAAA  1 : AAAA |
+    ^Csleep_print: signaled, setting flag
+    sleep_print: signaled, setting flag
+    read_AB: signaled, setting flag
+    sleep_print: finishing
+    sleep_print: finishing
+    B had: | 3 : BBBB |
+    read_AB: finishing
+
+B
+~
+
+    read() is a blocking call, it will block the process until it reads something.
+
+C
+~
+
+  In the output for `read_AB' there should be some lines for Child A
+  that look like
+  ,----
+  | A had: | 1 : AAAA |
+  `----
+  but also some lines that look like
+  ,----
+  | A had: | 4 : AAAA  5 : AAAA |
+  `----
+  and
+  ,----
+  | A had: |15 : AAAA 16 : AAAA 17 : AAAA |
+  `----
+  while Child B lines always look like
+  ,----
+  | B had: | 4 : BBBB |
+  `----
+  Explain why there is variance in Child A lines while Child B lines
+  look the same.
+  
+  
+  
+  
+  since read() is a blocking call, while it trys to read something from pipe B,
+  A keeps sending output to pipe A.
+
+
+PROBLEM 3 `select_AB.c'
+=======================
+
+  Note that `select_AB.c' uses the same techniques as `sleep_print.c' to
+  set up signal handlers and shut down on receiving a signal.
+
+
+A
+~
+
+  Compile `select_AB.c' and run it. Paste the results of running it for
+  a few seconds below.  Use Ctl-C to send an interrupt to end the
+  program.
+
+
+
+    select_AB: listening for children
+    A had: | 1 : AAAA |
+    A had: | 1 : AAAA |
+    B had: | 3 : BBBB |
+    A had: | 1 : AAAA |
+    A had: | 1 : AAAA |
+    A had: | 1 : AAAA |
+    B had: | 3 : BBBB |
+    A had: | 1 : AAAA |
+    A had: | 1 : AAAA |
+    A had: | 1 : AAAA |
+    B had: | 3 : BBBB |
+    A had: | 1 : AAAA |
+    A had: | 1 : AAAA |
+    ^Csleep_print: signaled, setting flag
+    sleep_print: signaled, setting flag
+    select_AB: signaled, setting flag
+    sleep_print: finishing
+    sleep_print: finishing
+    A had: | 1 : AAAA |
+    B had: | 3 : BBBB |
+    select_AB: finishing
+
+
+B
+~
+
+
+        the select() cuase the loop to wait until a pipe is ready for reading,
+    it makes the read() non-blocking. Then the while loop will read from whatever
+    pipe that is ready.
+        in read_AB, read() calls blocks so it has to print in the order that one
+    follows another. but in select_AB, it will read from whichever is ready.
+
+
+
+C
+~
+
+    Because in select_AB there won't have any output that long. The long output
+    in read_AB is caused by read() from pipe B blocking, then A keeps sending
+    output to pipe A. Once the read() call is done on pipe B, there will a lot
+    of stuff in pipe A. But select_AB will read when a pipe is ready, so pipe A
+    will never get a chance to store that much output.
+    
+    

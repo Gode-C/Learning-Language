@@ -1,0 +1,128 @@
+                           __________________
+
+                            LAB 02 QUESTIONS
+                           __________________
+
+
+- Name: Cyrus Chen
+- NetID: chen3736
+
+Answer the questions below according to the lab specification. Write
+your answers directly in this text file and submit it to complete Lab01.
+
+
+PROBLEM 1 `fork1.c'
+===================
+
+A
+~
+	I am number 0, my pid is 7561
+	I am number 8, my pid is 7560
+	I am number 1, my pid is 7562
+	I am number 2, my pid is 7563
+	I am number 3, my pid is 7564
+	I am number 5, my pid is 7566
+	I am number 4, my pid is 7565
+	I am number 6, my pid is 7567
+	I am number 7, my pid is 7568
+
+
+B
+~
+
+	The output is disordered. Because after the fork, two independent processes execute
+	Tehy do not execute the code in steps or using the same memory locations.
+	Therefore each process prints the message accordion to the printf on their own,
+	whithout waiting for any other process to finish.
+
+
+C
+~
+
+
+	#include <stdio.h>
+	#include <unistd.h>
+	#include <sys/wait.h>
+
+	int main(void) {
+	  int i;
+	  for(i = 0; i<8; i++){
+	    pid_t child = fork();
+	    wait(NULL);
+	    if(child == 0){
+		break;
+	    }
+	  }
+
+	  printf("I am number %d, my pid is %d\n",i,getpid());
+	  return 0;
+	}
+
+
+
+D
+~
+
+	There is only one parent process, and the rest 8 of them are all child process of it.
+
+							Parent 8
+							   |
+				-------------------------------------------
+				|	|	|	|	|	|	|	|
+				0	1	2	3	4	5	6	7
+				
+				
+
+PROBLEM 2 `fork-exec1.c'
+========================
+
+A
+~
+
+	 Running command 'ls'
+	------------------
+	total 51K
+	drwx------ 2 chen3736 CSEL-student    6 Sep 20 14:00 .
+	drwx------ 5 chen3736 CSEL-student    5 Sep 20 13:21 ..
+	-rwx------ 1 chen3736 CSEL-student 8.1K Sep 20 14:00 a.out
+	-rw------- 1 chen3736 CSEL-student  267 Sep 20 14:00 fork1.c
+	-rw------- 1 chen3736 CSEL-student  360 Sep 13 13:56 fork-exec1.c
+	-rw------- 1 chen3736 CSEL-student 2.3K Sep 20 13:59 QUESTIONS.txt
+
+B
+~
+
+	  The output has changed, what we modified in child_argv[] will change the 
+	  argument passed to system call "ls". The "ls" call will still be made unless
+	  we delete everything and make argv[] Null, then exec system call won't accept
+	  it.
+
+C
+~
+
+	  The system call has been changed to "gcc" or "cat", in this case it cause errors
+	  due to the incorrect arguments.
+
+
+D
+~
+	#include <stdio.h>
+	#include <stdlib.h>
+	#include <sys/wait.h>
+	#include <unistd.h>
+
+	int main(void){
+
+	  char *child_argv[] = {"ls","-l","-ah",NULL};
+	  char *child_cmd = "ls";
+	  printf("Running command '%s'\n",child_cmd);
+	  printf("------------------\n");
+	  
+	  pid_t child =fork();
+	  wait(NULL);
+	  if (child == 0)
+	  	execvp(child_cmd,child_argv);
+	  printf("------------------\n");
+	  printf("Finished\n");
+	  return 0;
+	}

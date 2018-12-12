@@ -1,0 +1,158 @@
+
+<!-- saved from url=(0070)http://www-users.cselabs.umn.edu/classes/Spring-2016/csci2041/hw2.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>CSci 2041: Advanced Programming Principles</title>
+<link rel="stylesheet" type="text/css" href="./hw2_files/class.css">
+</head>
+
+<body>
+<title> CSci 2014 - Homework 2</title>
+
+
+<h1> Homework 2 -- due Wednesday February 17 </h1>
+
+This homework will be graded out of 100 points.  It will count 5% of the
+grade.  Please submit it from the moodle page. <p>
+
+You need to write your code into a file and upload the file.
+You can read your code from a file into clojure by using (load-file
+"myfile.clj"), where myfile.clj is the name of your file and your file is in
+the directory from which you start clojure.
+The TAs will run your code on additional test cases.
+</p><p> <b>The late penalty policy has changed. Late homeworks must be submitted up
+to <font color="red">two days late (Friday night)</font></b>.  This will allow
+us to start grading and release the grades sooner.
+<br>
+</p><p></p>
+<ol>
+<li> [15 points] Write a procedure <code>(replace-with-sum vector)</code>
+that takes as argument a vector containing symbols and integers, and
+returns a list obtained by removing every number
+from the original vector and replacing them with the sum of all the
+numbers.  This new number has to be added at the end of the list.
+You cannot use any global variable, but you are free to use as many
+auxiliary procedures as you like.
+
+The procedure should work like this:
+<pre>user=&gt; (replace-with-sum '[a 4 3 b])
+(a b 7)   ; 4=3=7
+user=&gt; (replace-with-sum '[a b c])
+(a b c)
+user=&gt; (replace-with-sum '[2 5 1])
+(8)
+</pre>
+
+</li><li> [15 points] Write a procedure <code>running-sum</code> that 
+given a vector of numbers produces a
+list where each element in the list is the sum of
+all corresponding elements up to that point in the original vector.
+
+It should work like this:
+<pre>user=&gt; (running-sum [1 3 9 2])
+(1 4 13 15) ;where 1+3 =4, 1+3+9=13, 1+3+9+2=15
+user=&gt; (running-sum [2 2 2 2 2])
+(2 4 6 8 10)
+user=&gt; (running-sum [3])    
+[3]   ;; <font color="red">this can return either (3) or [3]</font>
+</pre>
+
+</li><li> [20 points] Write a procedure <code>(expand t)</code> that takes as argument a list.
+The elements of the list are either symbols or lists of two elements,
+a strictly positive integer (i.e. greater than 0) and a symbol.
+The integer is a repeat count, meaning that the symbol following it
+should be repeated that many times.
+The procedure should return a list
+where the repeated symbols are expanded, i.e. each sublist
+(&lt; number &gt; &lt; symbol &gt;) is replaced by a list with the
+symbol repeated &lt; number &gt; times.
+You cannot use any global variable, but you are free to use as many
+auxiliary procedures as you like.
+
+It should work like this:
+<pre>user=&gt; (expand '(the (2 big) boat))
+(the (big big) boat)
+user=&gt; (expand '((3 oh) wow))
+((oh oh oh) wow)
+user=&gt; (expand '((1 this) is (2 very) nice))
+((this) is (very very) nice)
+</pre>
+
+</li><li> [15 points]
+Write a procedure <code>(factors <font color="red">range num</font>)</code>, 
+that takes a range and an integer as arguments and returns the elements 
+in the range that are factors of num.
+<pre>user=&gt;(factors (range 3 6) 12)
+(3 4)
+user=&gt;(factors (range 2 13) 50)
+(2 5 10)
+user=&gt;(factors (range 4 7) 9)
+()
+</pre>
+
+</li><li> This part of the homework is to get you to start working on
+encoding words as numbers so we can later do encryption.
+For simplicity, the problem is broken into small parts.
+
+<ol>
+<li> [10 points] Write a function <code>(string-&gt;ascii str)</code> to 
+convert a word, written 
+as a string, into a sequence integer as follows:
+transform the string into a list of the corresponing characters, 
+then transform each character into the 
+corrsponding ascii code and subtract 32 from each ascii code,
+32 is the first printable ascii character that represents a blank space.  
+<pre>user=&gt; (string-&gt;ascii "ouch")
+(79 85 67 72)
+user=&gt; (string-&gt;ascii "gulp")
+(71 85 76 80)
+user=&gt; (string-&gt;ascii " ")
+(0)
+</pre>
+
+</li><li> [10 points] write a function <code>(ascii-&gt;num96 seq)</code> to 
+transform each 
+list of numbers into a single number by considering each
+of the numbers in the sequence as a digit in a representation with base 96.
+Suppose your number is (n1 n2 n3 n4). You will compute
+n1 * b^3 + n2 * b^2 +n3 * b + n4 or, equivalently,
+(((n1*b + n2)*b + n3)*b + n4 <br>
+<pre>user=&gt; (ascii-num96 <font color="red">'</font>(79 85 67 72))
+<font color="red">70684008</font>
+</pre>
+</li><li> [10 points] Given a vector of words write a function 
+<code>(make-dict words)</code>
+that encodes each word as done in the previous problem
+and returns a map of the words and their corresponding numbers.
+It should work like this:
+<pre>user=&gt; (make-dict ["ouch" "gulp"])
+{"ouch<font color="red">" 70684008</font>, "gulp" <font color="red">63606992</font>} </pre>
+</li><li> [5 points] Finally, write a function <code>(in-dict dictmap word)</code>
+that searches for a word in the map created by the previous step and returns 
+the encoding if the word is in the map or nil otherwise.
+<pre>user=&gt;(in-dict (make-dict ["ouch" "gulp"]) "gulp")
+<font color="red">63606992</font>
+user=&gt;(in-dict (make-dict ["ouch" "gulp"]) "noway")
+<font color="red">nil</font>
+</pre>
+</li></ol>
+</li></ol>
+
+<a href="http://www-users.cselabs.umn.edu/classes/Spring-2016/csci2041/index.html">Main page</a>
+
+<address>
+<font size="-1">
+<i><b>Copyright:</b> © 2016 by the Regents of the University 
+of Minnesota <br> 
+Department of <a href="http://www.cs.umn.edu/">Computer Science and
+Engineering</a>. All rights reserved. <br>
+<b>Comments to: </b><a href="mailto:gini@cs.umn.edu">Maria Gini</a><br>
+<font color="red">Changes and corrections are in red</font>.
+<script language="JavaScript">
+<!---//hide script from old browsers
+    document.write( "Last updated "+ document.lastModified );
+    //end hiding contents --->
+    </script>Last updated 02/10/2016 21:27:13
+</i> </font> 
+
+
+</address></body></html>

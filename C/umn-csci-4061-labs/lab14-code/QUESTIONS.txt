@@ -1,0 +1,90 @@
+                       _________________________
+
+                        LAB 14 REVIEW QUESTIONS
+                       _________________________
+
+
+- Name: Cyrus Chen
+- NetID: chen3736
+
+Answer the questions below according to the lab specification. Write
+your answers directly in this text file and submit it to complete Lab01.
+
+
+Problem 1: Client Socket Setup
+==============================
+
+  Identify the main steps for a C program to set up a "client" socket
+  which will communicate with remote machine which has a known open port
+  and exchange information.
+
+
+
+    getaddrinfo() -> create socket -> connect ->  write/read 
+
+
+Problem 2: Server Socket Setup
+==============================
+
+  Identify the main steps for a C program to set up a "server" socket
+  which will listen for connections from remote machine.
+
+    getaddrinfo -> create socket -> bind -> listen ->  accept(client connection)
+    -> write/read
+
+
+
+Problem 3: Private Messages
+===========================
+
+  Consider the addition of private messages to the blather
+  server/client.  This feature would allow a user to type a message like
+  ,----
+  | Bruce>> @Lois I know Clark's alter ego
+  `----
+  and have it only delivered to the user specified with the @ symbol,
+  Lois in this case, rather than have the message broadcast to all
+  users. Only on the screen of Lois and Bruce would appear the private
+  message delivery:
+  ,----
+  | [Private: Bruce @ Lois] : I know Clark's alter ego
+  `----
+  All other users would not see this message.
+
+  Discuss the alterations to server and client that would be required to
+  implement this feature. Include in your description.
+  1. Any additional data types or alterations to existing data types
+  
+    mesg_t need a new .kind of private message.
+    kind_t need a new .to_name for reveiever of private message.
+  
+  2. Any additional FIFOs or protocol alterations
+  
+    no
+  
+  3. Changes required for bl-client to implement private messages
+  
+    ckeck input when creating messages, private if has @someone.
+    create private message and send to server.
+    when reveieve private, print the sender name.
+  
+  4. Changes required for bl-server to implement private messages
+
+    when receieve private messages, only send to the client involved.
+
+
+Problem 4: mmap()
+=================
+
+  Describe briefly what mmap() does and how it may be used to simplify
+  file I/O operations significantly.
+  
+    mmap() creates a new mapping in the virtual address space.
+        it can assign a region of virtual address space corresponding to file
+        content. 
+    -the the whole file is accessible, no need to worry about read() or
+        buffer bull.
+    -less system calls, like read() or write().
+    -if multiple process are accessing the same file, they could share the
+        physical space.
+    -less copying

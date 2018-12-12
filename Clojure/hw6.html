@@ -1,0 +1,229 @@
+
+<!-- saved from url=(0070)http://www-users.cselabs.umn.edu/classes/Spring-2016/csci2041/hw6.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>CSci 2041: Advanced Programming Principles</title>
+<link rel="stylesheet" type="text/css" href="./hw6_files/class.css">
+</head>
+
+<body>
+<title> CSci 2014 - Homework 6</title>
+
+
+<h1> Homework 6 -- due Wednesday April 20 </h1>
+
+<h4> Important reminders</h4>
+<ul>
+<li> You need to write your code into a file and upload the file.
+You can read your code from a file into clojure by using (load-file
+"myfile.clj"), where myfile.clj is the name of your file and your file is in
+the directory from which you start clojure.
+The TAs will run your code on additional test cases.
+
+</li><li> Use the following convention for the name of the file you will
+submit:  start with the word "sec" followed by
+the non-zero part of your section number, followed by -, and
+the homework number.  For instance, for this homework,
+if you are in section 002 you will use 
+<code>sec2-hw6.clj</code>.
+Do not include your name. When assignments are dowloaded from
+Moodle your name is added to the front of the file name you used.
+
+</li><li> Submit ONLY plain text files. Make sure the file you submit can be loaded
+in clojure with no errors if you want to receive any credit. Use exactly
+the names we specify for the functions with the same arguments.
+You do not need to submit results of running your program.
+</li></ul>
+
+<h3> Extracting information from the log file of a WWW server </h3>
+
+For this homework you will use a large log file, "NASA_access_log_Jul95_short",
+and extract informatiom from it using regular expressions.
+This file (which is ~100MB) contain about half a month worth of all HTTP requests 
+to the NASA Kennedy Space Center WWW server in Florida.  
+
+
+<h4>Description of the file contents</h4>
+
+The requests to the server are recorded in an ASCII file, one line per request, 
+with the following structure:
+<ul>
+<li>  host making the request. A hostname when possible, otherwise the
+  Internet address if the name could not be looked up.
+</li><li>  timestamp in the format [03/Jul/1995:10:47:48 -0400]
+   "DD/MON/YYYY:HH:MM:SS" where DD is the day of the month, MON is the name
+   of the month, YYYY is the year, HH:MM:SS is the time of day using a
+   24-hour clock, and the timezone is -0400.
+</li><li>   request given in double quotes.
+</li><li>   HTTP response code.
+</li><li>   number of bytes in the reply.
+</li></ul>
+
+The HTTP response codes and their meanings are part of Hypertext Transfer Protocol
+-- HTTP/1.1 (https://www.w3.org/Protocols/rfc2616/rfc2616-sec6.html):
+<br>
+The first digit of the Status-Code defines the class of response. The last
+two digits do not have any categorization role. There are 5 values for the
+first digit:
+<ul>
+<li> 1xx: Informational - Request received, continuing process
+</li><li> 2xx: Success - The action was successfully received, understood, and accepted
+</li><li> 3xx: Redirection - Further action must be taken in order to complete the request
+</li><li> 4xx: Client Error - The request contains bad syntax or cannot be fulfilled
+</li><li> 5xx: Server Error - The server failed to fulfill an apparently valid request
+</li></ul>
+
+The second to last field in each log contains the status code returned by the
+server for the request. For example, the first
+line of the file contains 200 for the status and therefore, indicates that the
+request was carried out by the server successfully.
+
+
+<h3>What to do:</h3>
+
+<ol>
+<li> Get from github the file "NASA_access_log_Jul95_short", by doing
+<pre>git pull
+</pre>
+and place it in the directory where you have your working copies of the
+files you got from git.
+
+</li><li> Read line by line the file NASA_access_log_Jul95_short you got from git.
+
+</li><li> Write clojure clode to answer the following questions. You should
+use regex, but you can use as many other functions as you want.
+
+<ol>
+<li> How many requests were made without a hostname, i.e., from an IP address
+   of the format [0-255].[0-255].[0-255].[0-255]?
+
+
+</li><li> Find in the file all the requests that were made from a private IP address.
+<br>
+A private IP address is an address that is reserved for special uses cases. 
+Examples of reserved IP address ranges are: 
+<br><code>
+127.0.0.0-127.255.255.255</code>: Reserved for loopback and private network use only.
+<br> <code>
+10.0.0.0-10.255.255.255:</code>  Reserved for private network use only.
+<br> <code>
+192.168.0.0-192.168.255.255:</code>  Reserved for private network use only.
+<br> <code>
+192.88.99.0-192.88.99.255: </code> Reserved for IPv6 to IPv4 relay use only. 
+</li><li> Using the timestamp shown earlier as the format used in the web server logs,
+     find the number of requests that were made on the 4th and 5th of July.
+</li><li> Find the distinct hosts that made requests between 10:00pm and 10.30pm on 
+     the 5th of July. <font color="red"> The function mame specified, (count-hosts),
+     seems to indicate we want the number of hosts, but the question asks for the 
+     distinct hosts. Please return the distinct hosts. For the time window you can 
+     end it at 10:29 and leave out 10:30</font>.
+</li><li> Find all the requests that were not successful, i.e., resulted in a server 
+     error (5xx).
+</li><li> <font color="red">Count</font> all the requests that were redirected, 
+     i.e., resulted in the response code 3xx.
+</li><li> <font color="red">Count</font> all requests that sent more than 
+     50000 bytes in the response.
+</li></ol>
+</li></ol>
+
+<h3> <font color="red">Comments and additional specifications </font></h3>
+
+<ol>
+<li> Do not slurp the file but read it line by line, as specified in
+     step 2.  Reading the file in a single step does not scale to huge
+     files, so you need to learn how to read line by line.  We have
+     shown how to do it in a lab.
+</li><li> When you read one line, you need to decide what to do with that line.  
+     There are at least two different ways of thinking about how to
+     structure your program:
+     <ul> <li>you write one function for each of the seven things you 
+     need to extract from the file.  Each function will open the file,
+     read one line at a time, use an appropriate regex, and return the
+     value computed for each question.  Please remember that printing
+     the result is not sufficient, you need to return the value.
+     Printing is just a side effect.
+     </li><li> you read all the lines and save them into a big vector.
+     You then call individual functions, one for each of the things
+     you need to extract from the file.  In this case, the file is read
+     once and its contents are stored in memory.  This approach is not 
+     as scalable but it is fine. When you write the separate functions.
+     the function will use the strings in the vector instead of reading
+     it from the file.
+     </li></ul>
+</li><li> To allow for different ways of doing things, the functions to use
+     for computing on each line will not take any argument.  If you write 
+     functions that read the file, you should hard code the file name 
+     in the functions.
+     If you write functions to operate on the lines you have saved in a big
+     vector, then hard code in the functions the global variable where 
+     you saved the lines from the file.  Hope this is clear.  If not, 
+     please use the class forum.
+     <p> Here are the function names to use:
+     <br> <tt> (count-IP)</tt>
+     <br> <tt> (find-private-IP)</tt>
+     <br> <tt> (count-request-on-dates)</tt>
+     <br> <tt> (count-hosts)</tt>
+     <br> <tt> (find-server-error)</tt>
+     <br> <tt> (count-redirect)</tt>.  We replaced the original question
+     of finding with counting to make things easier, since there are a 
+     lot of these requests.
+     <br> <tt> (count-morethan50000)</tt>.  We replaced the original 
+     question of finding with counting to make things easier, since 
+     there are many these requests.
+</p></li><li> for the IP addresses in the file, they are all correct, so you do 
+     no need to check that each number is in the 0 to 255 range.  You
+     need to just check the number of digits in each part is beween 1 and
+     3, and the numbers of separated by a period.
+</li><li> there are no private IP addresses in the file we have given to you.
+     There were some of them in the rest of the log file that we did not
+     give to you because it was too big. 
+     Here are a few lines. The first one has a private address, 
+     192.168.X.X is private. The other lines do not have private addresses.
+     192.88.99.X is private but 192.88.13.248 is not. Also 192.112.227.51
+     is not private.
+     <pre>192.168.2.7 - - [19/Jul/1995:00:29:42 -0400] "GET / HTTP/1.0" 200 7071
+192.88.13.248 - - [17/Jul/1995:18:25:01 -0400] "GET /ksc.html HTTP/1.0" 200 7071
+192.112.227.51 - - [01/Jul/1995:00:52:39 -0400] "GET /shuttle/countdown/liftoff.html HTTP/1.0" 200 4538
+</pre>
+     Make sure your program can detect them, because we will check that your
+     program can correctly identify them.
+</li></ol>
+
+<h3> Bonus question </h3> (up to 10 points)
+
+For this question you will work with an inverted index to be used to search in
+a set of dovuments (or files).
+An index is a list of documents and which words appear in them. 
+An inverted index is a list of words and the documents in which they appear. 
+<ol>
+<li> Write your own inverted index or create it using the functions 
+provided at
+(a href="https://www.rosettacode.org/wiki/Inverted_index#Clojure"
+https://www.rosettacode.org/wiki/Inverted_index#Clojure.
+<br>
+Use the files a, b, c from git (<font color="red&quot;">they have been
+added)</font> or select your own files, by calling
+<tt>(make-index (list "a" "b" "c"))</tt>. 
+</li><li> Suppose you have the inverted index constructed from the set of
+files a, b, and c. You now have a new file, d, that you want to use 
+to extend the inverted index.  
+<br> Write a function <tt>(extend invindex file)</tt> 
+to extend the existing
+inverted index by including the new words from file d, and to update 
+appropriately the words that were already in the inverted index and 
+are also in file d.
+</li></ol>
+
+<address>
+<font size="-1">
+<b>Comments to: </b><a href="mailto:gini@cs.umn.edu">Maria Gini</a><br>
+<font color="red">Changes and corrections are in red</font>.
+<script language="JavaScript">
+<!---//hide script from old browsers
+    document.write( "Last updated "+ document.lastModified )
+    //end hiding contents --->
+</script>Last updated 04/20/2016 02:31:08
+ </font> 
+
+
+
+</address></body></html>

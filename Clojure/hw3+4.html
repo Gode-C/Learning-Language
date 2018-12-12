@@ -1,0 +1,223 @@
+
+<!-- saved from url=(0072)http://www-users.cselabs.umn.edu/classes/Spring-2016/csci2041/hw3+4.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>CSci 2041: Advanced Programming Principles</title>
+<link rel="stylesheet" type="text/css" href="./hw3+4_files/class.css">
+</head>
+
+<body>
+<title> CSci 2014 - Homework 3+4</title>
+
+
+<h1> Homework 3+4 -- due Wednesday March 9 </h1>
+
+<h4> Important reminders</h4>
+<ul>
+<li> You need to write your code into a file and upload the file.
+You can read your code from a file into clojure by using (load-file
+"myfile.clj"), where myfile.clj is the name of your file and your file is in
+the directory from which you start clojure.
+The TAs will run your code on additional test cases.
+
+</li><li> Use the following convention for the name of the file you will
+submit:  start with the word "sec" followed by
+the non-zero part of your section number, followed by -, and
+the homework number.  For instance, for this homework,
+if you are in section 002 you will use 
+<code>sec2-hw4.clj</code> or
+<code>sec2-hw3+4.clj</code>.
+Do not include your name. When assignments are dowloaded from
+Moodle your name is added to the front of the file name you used.
+
+</li><li> Submit ONLY plain text files. Make sure the file you submit can be loaded
+in clojure with no errors if you want to receive any credit. Use exactly
+the names we specify for the functions with the same arguments.
+You do not need to submit results of running your program.
+</li></ul>
+
+This homework will take you through the steps of doing RSA encryption.
+For this homework you will use some of the functions you wrote
+in previous labs and use the code you cloned from GitHub. 
+You need to update the files from GitHub by first doing <tt> cd to the 
+directory where you cloned from GitHub</tt> and then
+<pre>git pull
+</pre>
+The file <tt>modular-inverse.clj</tt> has been updated.
+
+<p>
+RSA is a public-key cryptosystem which uses a public encryption key
+and a secret decryption key.  Here are the steps:
+
+</p><ol>
+<li> (14 points) Key generation<br>
+
+RSA uses 4 numbers, called <tt>p, q, d, e</tt>, chosen so that
+
+    <tt>(m^e)^d mod n = m </tt>
+
+<br> <tt>p</tt> and <tt>q</tt> must be large prime numbers, similar 
+in magnitude.
+<br> It is important to choose <tt>p</tt> and <tt>q</tt> so that 
+<tt>(p-1)</tt> and <tt>(q-1)</tt> are
+strong primes, i.e. <tt>(p-1)/2, (q-1)/2</tt> are also prime.
+<p> For this assignment we give you the two numbers <tt>p</tt> 
+and <tt>q</tt>, so you will not have to select them.  Add these
+lines to your file:
+</p><pre>(def p 6240322667N)    ; need long integer
+(def q 6240323147N)    ; need long integer
+</pre>
+From <tt>p</tt> and <tt>q</tt> you have to compute two new numbers <br>
+  <tt> n = p*q <br>
+  m = (p-1)* (q-1)</tt>
+
+<p> The next number, <tt>e</tt>, has to be <tt>1 &lt; e &lt; <font color="red">m
+</font></tt> and
+has to be relatively prime with <tt>m</tt>, i.e <tt>gcd(e,m)=1</tt>.
+
+<br>There is a unique number <tt>d</tt> that is the modular multiplicative 
+inverse of <tt>e</tt>, i.e <tt>d*e mod m = 1</tt>.
+<br> There are many <tt>e</tt> that satisfy the requirements.
+</p><p>
+Write a function <tt>(find-e m)</tt> to find a value for <tt>e</tt>.
+<br>
+The function should guess a value for <tt>e</tt>, and see if there is
+a modular inverse for it. If there is, then <tt>e</tt> is a valid number
+for RSA.
+</p><p>
+Assign to <tt>d</tt> the value of <tt>(modular-inverse e <font color="red">m
+</font></tt> ).
+
+<br> At the end of this step, you will have the four numbers that RSA needs.
+
+</p></li><li> (6 points) Key distribution. <br>
+<tt>n</tt> and <tt>e</tt> are the public key.   
+<tt>n</tt> is called the modulus, <tt>e</tt> the public exponent.
+<br> <tt>n</tt> and <tt>d</tt> are the private key.  
+Never divulge your <tt>d</tt> and your <tt>p</tt> and <tt>q</tt>.
+
+<p>To simplify the use of the public key, write a constructor <br>
+<tt>(make-public-key n e)</tt> <br>
+to create a data structure where you will keep the two parts of the public key <br>
+and write two selectors, <br>
+<tt>(public-mod publickey)</tt>
+and <tt>(public-exp publickey)</tt> <br> 
+to return each of them.  
+This way you will use the selectors to access the two parts of the 
+data structure and your choice of data structure will not affect 
+any other function.</p><p>
+
+</p></li><li> (25 points) Encryption of a word. <br> 
+
+A number is encrypted using the public key as<br>
+  <tt>cyphernumber = plainnumber^e mod n</tt>,<br>
+where <tt>plainnumber</tt> is the unencrypted number, 
+and <tt>cyphernumber</tt> is the encrypted number. 
+The number to be encrypted has to be <tt> &lt; n</tt>.
+<br> Write the function <tt>(encrypt-num number publickey)</tt> 
+
+<p>A word is encrypted by first converting it 
+to a number which is then encrypted.  
+<br> To convert a word to a number you can modify
+the functions <tt>string-&gt;ascii</tt> and <tt>ascii-num96</tt> 
+you wrote for homework 2 to use as base 91 instead than 96 (this
+will not include the ascii characters that come after z).
+
+</p><p> Next you need to write the function 
+<tt>(encrypt-word plaintext publickey)</tt>
+to encrypt a word by transforming it into a number and encrypting it.
+<br> It should work like this:
+</p><pre>user=&gt; (encrypt-word "void" public-key)
+25473882069401110051N
+user=&gt; (encrypt-word "gini" public-key)
+20648268134717579244N
+</pre>
+Finally, use your your function to encrypt your x500  (just the id, not the @ part otherwise 
+it is too long), as in the example above.
+<p>
+</p></li><li> (15 points) Decryption of a word. <br>
+The original message <tt>plaintext</tt> can be recovered from 
+<tt>cyphertext</tt> by computing
+<br> <tt> cyphertext^d mod n</tt>, <br>which is the same as
+<tt>(plaintext^e mode n)^d mod n</tt>
+
+<br> For this you need to write the function
+<tt>(decrypt-word cyphertext privatekey)</tt>
+<br> It should work like this:
+<pre>user=&gt; (decrypt-word 25473882069401110051N private-key)
+"void"
+user=&gt; (decrypt-word 20648268134717579244N private-key)
+"gini"
+</pre>
+
+</li><li> (25 points) Encryption of a sentence. <br> 
+
+For this part you can use <tt>partition-by</tt> to break the sentence
+into individual words, which you can then convert to numbers and encrypt.
+<br>For instance, if you want to break the string on blank spaces, do: <br>
+<pre>user=&gt; (partition-by (fn[x] (= x \space)) "lisp lovers get garbage collected")
+((\l \i \s \p) (\space) (\l \o \v \e \r \s) (\space) (\g \e \t) (\space) (\g \a \r \b \a \g \e) (\space) (\c \o \l \l \e \c \t \e \d))
+</pre>
+<br>
+You can use any other method of your own choice to break the sentence into
+parts. The only requirement is that no part can be longer than 10 letters/digits
+ond no punctuation, otherwise the number produced by converting to a number is 
+<tt>&gt; n</tt> and will break the process.
+
+<p> Write the function <tt>(encrypt-msg msg publickey)</tt>
+
+</p><p> Try your function on the following sentences: 
+<br> "c lovers do not die they get cast into void"
+<br> "lisp lovers get garbage collected" 
+<br> a sentence of your own choice with at least 6 words (no word can be longer
+than 10 letters/digits and no punctuation)
+</p><p>
+</p></li><li> (15 points) Decryption of a sentence.
+<br>Decrypt a message written as a list of encrypted chunks, by decrypting each
+into an integer, converting to a string, and returning a string with
+all the decrypted parts. If your encryption did not include blank spaces between
+words you need to add the blank spaces back.
+
+<p> Write the function <tt>(decrypt-msg msg privatekey)</tt>
+
+</p><p> As an example, here is the encryption I am getting:
+</p><pre>user=&gt; (encrypt-msg "lisp lovers get garbage collected" public-key)
+(9746835113510272068N 0N 31010268053637348251N 0N 209917131241031144N 0N 23415676707122335067N 0N 2488092978978861211N)
+user=&gt; (decrypt-msg '(9746835113510272068N 0N 31010268053637348251N 0N 209917131241031144N 0N 23415676707122335067N 0N 2488092978978861211N) 
+  private-key)
+"lisp lovers get garbage collected"
+</pre>
+</li></ol>
+
+(10 points) Bonus question <br>
+
+RSA can also be used to verify that a message was sent from a specific person.  
+Here is how it works.
+<br> Alice encrypts a word <tt>plaintext</tt> using her private key, i.e. by computing 
+<tt>cyphertext=plaintext^d mod n</tt> and sends it to Bob. 
+<br> When Bob gets it decrypts it with the public key of Alice, i.e.
+computes <tt>(cyphertext^e mod n)</tt>.
+<br> If he gets back <tt>plaintext</tt> he knows the sender used 
+Alice private key.
+<p> Write a function <tt>(encrypt-val w key)&gt;/tt&gt; and the opposite function
+<tt>(decrypt-val c key)</tt>.
+They should work like this:
+</tt></p><pre><tt>user=&gt; (encrypt-val "maria" private-key)
+35069910769087591972N
+user=&gt; (decrypt-val 35069910769087591972N public-key)
+"maria"
+</tt></pre><tt>
+
+<address>
+<font size="-1">
+<b>Comments to: </b><a href="mailto:gini@cs.umn.edu">Maria Gini</a><br>
+<font color="red">Changes and corrections are in red</font>.
+<script language="JavaScript">
+<!---//hide script from old browsers
+    document.write( "Last updated "+ document.lastModified )
+    //end hiding contents --->
+</script>Last updated 10/19/2018 14:12:22
+ </font> 
+
+
+
+</address></tt></body></html>

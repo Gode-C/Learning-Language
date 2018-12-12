@@ -1,0 +1,25 @@
+;functions
+(defn prime? [a] (if (= a 2) true (loop [x 2] (if (< x (+ 1 (Math/sqrt a))) (if (zero? (mod a x)) false (recur (inc x))) true))))
+
+(defn sum-primes [a b] (if (<= a b) (if (true? (prime? a)) (+ a (sum-primes (inc a) b)) (sum-primes (inc a) b)) 0))
+
+(defn sum-even [a b] (if (<= a b) (if (even? a) (+ a (sum-even (inc a) b)) (sum-even (inc a) b)) 0))
+
+
+;copy of terminal
+user=> (prime? 7)
+true
+user=> (prime? 10)
+false
+user=> (sum-primes 2 7)
+17
+user=> (sum-primes 2 10)
+17
+user=> (sum-even 2 4)
+6
+user=> (sum-even 2 10)
+30
+
+;another idea on question one, not working yet, help needed! Trying to creat a list then change each element to 0's and 1's by (mod x a), if answer are all false, then the function returns true.
+
+(defn prime? [a] (if (= a 2) true (loop [x 2] (if (< x (+ 1 (Math/sqrt a))) (if (zero? (mod a x)) false (recur (inc x))) true))))

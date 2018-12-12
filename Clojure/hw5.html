@@ -1,0 +1,251 @@
+
+<!-- saved from url=(0070)http://www-users.cselabs.umn.edu/classes/Spring-2016/csci2041/hw5.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>CSci 2041: Advanced Programming Principles</title>
+<link rel="stylesheet" type="text/css" href="./hw5_files/class.css">
+</head>
+
+<body>
+<title> CSci 2014 - Homework 5</title>
+
+
+<h1> Homework 5 -- due Wednesday March 30 </h1>
+
+<h4> Important reminders</h4>
+<ul>
+<li> You need to write your code into a file and upload the file.
+You can read your code from a file into clojure by using (load-file
+"myfile.clj"), where myfile.clj is the name of your file and your file is in
+the directory from which you start clojure.
+The TAs will run your code on additional test cases.
+
+</li><li> Use the following convention for the name of the file you will
+submit:  start with the word "sec" followed by
+the non-zero part of your section number, followed by -, and
+the homework number.  For instance, for this homework,
+if you are in section 002 you will use 
+<code>sec2-hw5.clj</code>.
+Do not include your name. When assignments are dowloaded from
+Moodle your name is added to the front of the file name you used.
+
+</li><li> Submit ONLY plain text files. Make sure the file you submit can be loaded
+in clojure with no errors if you want to receive any credit. Use exactly
+the names we specify for the functions with the same arguments.
+You do not need to submit results of running your program.
+</li></ul>
+
+<h3> Two-player normal form games</h3>
+
+For this homework you will write a program to play a tournament
+of the Prisoner Dilemma game.  We first explain what two-player normal 
+form games are and how they are played. The homework specifies
+what to do at a high level. We specify only the name of the
+function to play a game tournament. The choice of how to write
+the strategies, represent the history of the plays, store the
+gane matrix, etc are left to you.
+<p>
+(Problem description taken in part from https://mitpress.mit.edu/sicp/psets/ps4prs/readme.html)
+<br>
+A prisoner's dilemma is an example of a two-player normal form game.
+It involves two players. Each has a choice
+between <i>cooperating</i> and <i>defecting</i>. If the two players
+cooperate, they each do moderately well; if they both defect, they
+each do moderately poorly. If one player cooperates and the other
+defects, then the defector does very well and the cooperator does
+very poorly. 
+</p><p>
+In game theory, a <i>two-player normal form game</i> is represented
+as a two-by-two matrix, as shown in the table. 
+The two players are called A and B, and
+the choices are called ``cooperate'' and ``defect.''
+
+</p><center>
+<table border="1" cellpadding="3">
+<tbody><tr><td>            </td><td>B cooperates</td><td>B defects</td></tr>
+<tr><td>A cooperates</td><td>5 5</td><td> 2 3</td></tr>
+<tr><td>A defects   </td><td>3 2</td><td> 1 1</td></tr>
+</tbody></table>
+</center>
+<p>
+Players A and B play a single game by separately (and
+secretly) choosing to either cooperate or defect. Once each player has
+made a choice, he announces it to the other player; and the two then
+collect their respective scores in the game matrix.  Each entry in the
+matrix is a pair of numbers indicating a score for each player,
+depending on their choices. Thus, in the example, if Player A
+chooses to cooperate while Player B defects, then A gets 2
+points and B gets 3 points. If both players defect, they each
+get 1 point. Note, by the way, that the game matrix is a matter of
+public knowledge; for instance, Player A knows before the game
+even starts that if he and B both choose to defect, they will
+each get 1 point.
+</p><p>
+In an <i>iterated game</i>, the two players play repeatedly: thus,
+after finishing one game,  A and B may play another.
+(Admittedly, there is a little confusion in the terminology here: you
+can think of each individual game as a single ``round'' of the larger,
+iterated game.) There are a number of ways in which iterated games may
+be played; in the simplest situation, A and B play for
+some fixed number of rounds (say, 200), and before each round they are
+able to look at the record of all previous rounds. For instance,
+before playing the tenth round of their iterated game, both A
+and B are able to study the results of the previous nine rounds.
+</p><p>
+This type of game is a particularly easy one to analyze.
+Let's examine the situation from Player A's point of view
+(Player B's point of view is identical):
+``Suppose  B cooperates. Then I do better by cooperating
+myself (I receive 5 points instead of 3). On the other
+hand, suppose B defects. I still do better by cooperating
+(since I get 2 points instead of 1). So no matter what
+B does, I am better off cooperating.''
+Player B will, of course, reason the same way, and both will
+choose to cooperate. In the terminology of game theory, both A
+and B have a <i>dominant</i> choice --- i.e., a choice that gives
+a preferred outcome no matter what the other player chooses to do.
+This example does not represent a prisoner's dilemma
+situation, since when both players make their dominant choice, they
+also both achieve their highest personal scores.  We'll see an example
+of a prisoner's dilemma game very shortly.
+<br>
+To recap: with thegiven gme matrix we
+would expect both players to cooperate; and in an iterated game, we would
+expect both players to cooperate repeatedly, on every round.
+
+</p><h3>The Prisoner's Dilemma Game Matrix</h3>
+
+Consider the game matrix shown here:
+
+<center>
+<table border="1" cellpadding="3">
+<tbody><tr><td>            </td><td>B cooperates</td><td>B defects</td></tr>
+<tr><td>A cooperates</td><td> 3 3</td><td> 0 5 </td></tr>
+<tr><td>A defects   </td><td> 5 0</td><td> 1 1 </td></tr>
+</tbody></table>
+</center>
+<p>
+In this case, Players A and B both have a dominant
+choice---namely, defection. No matter what Player B does,
+Player A improves his own score by defecting, and vice versa.
+However, there is something odd about this game. It seems as though
+the two players would benefit by choosing to cooperate. Instead of
+winning only one point each, they could win three points each.  So the
+``rational'' choice of mutual defection has a puzzling
+self-destructive flavor.
+</p><p>
+To formalize the situation, let CC be the number
+of points won by each player when they both cooperate; let DD be
+the number of points won when both defect; let CD be the number
+of points won by the cooperating party when the other defects; and let
+DC be the number of points won by the defecting party when the
+other cooperates. Then the prisoner's dilemma situation is
+characterized by the following conditions:
+
+</p><pre>DC &gt; CC &gt; DD &gt; CD 
+CC &gt; (DC + CD) / 2
+</pre>
+
+In the last game matrix, we have:
+
+<pre>DC = 5 
+CC = 3
+DD = 1 
+CD = 0
+</pre>
+
+These values satisfy the prisoner's dilemma conditions.
+
+<p>In the late 1970's, political scientist Robert Axelrod held a computer
+tournament designed to investigate the prisoner's dilemma
+situation. The rules and results are described in Axelrod's book 
+"The Evolution of Cooperation".  
+</p><h3>What to do:</h3>
+
+<ol>
+<li> Write a function, <tt>(compete-n-times strategy1 strategy2 n)</tt> 
+to play two ``strategies'' against one another
+for n games, where n is a parameter you pass to the function, and print 
+out the scores for each of the two players.
+<p>
+We suggest to represent the
+player strategies as procedures. Each strategy should take
+two inputs --- its own ``history'' (that is, a list of all its
+previous ``plays'') and its opponent's ``history.'' The strategy
+should returns either the symbol <tt>c</tt> for ``cooperate'' or the symbol
+<tt>d</tt> for ``defect''.
+<br>
+At the beginning of an iterated game, each history is empty.
+As the game progresses, the histories grow by adding
+<tt>c</tt>'s and <tt>d</tt>'s. Note how each strategy should 
+have its own history as its first input. <i>[Hint: use an atom to
+store the history, so in each round it can be updated.]</i>
+</p><p>
+The values from the game matrix should be stored in a global variable
+and used to calculate the scores for each game.  This way the values
+in the game matrix can be changed without having to change anything
+else.
+<br>
+At the end of the tournament the scores of each player have to be 
+printed.  The total determines the winner of the tournament.
+</p></li><li>
+Implement these strategies for the iterated prisoner's
+dilemma game:
+<ul>
+<li>All-Defect.
+A program using the <i>all-defect</i> strategy simply defects on
+every round of every game.
+</li><li>All-Cooperate.
+A program using the <i>all-cooperate</i> strategy cooperates
+on every round of every game.
+</li><li>Random.
+A program using the <i>random</i> strategy cooperates or defects on 
+a random basis.
+</li><li>Tit-for-Tat.
+This program cooperates on the first round, and then on every subsequent
+round it mimics the other player's previous move. Thus, if the other
+player cooperates (defects) on the n-th round, then <i>tit-for-tat</i>
+will cooperate (defect) on the (n + 1)-th round.
+</li></ul>
+
+All these strategies are extremely simple. The first three
+do not even pay any attention to the other player; their responses are
+uninfluenced by the previous rounds of the game.  Nevertheless,
+simplicity is not necessarily a disadvantage.  Rapoport's first-prize
+program employed the <i>tit-for-tat</i> strategy, and achieved the
+highest average score in a field of far more complicated programs.
+</li><li>
+Play games among the four strategies defined above, pairing them in
+all possible ways.  For each pair of strategies run a tournament of
+100 games.  
+
+Notice how a strategy's performance varies depending on its
+opponent.  For example, <tt> all-cooperate</tt> does well
+against <tt>tit-for-tat</tt> or against another <tt> all-cooperate</tt>,
+but it loses badly to <tt> all-defect</tt>.  Notice how <tt>
+tit-for-tat</tt> never beats its opponent --- but it never
+loses badly.
+</li></ol>
+
+<h3> Bonus question </h3> (up to 10 points)
+
+Write a strategy <tt> tit-for-two-tats</tt>. The strategy should always
+cooperate unless the opponent defected on both of the previous two
+rounds, or, equivalently, <tt> tit-for-two-tats</tt> should cooperate if
+the opponent cooperated on either of the previous two rounds. 
+Play <tt> tit-for-two-tats</tt> against other strategies.
+
+
+<address>
+<font size="-1">
+<b>Comments to: </b><a href="mailto:gini@cs.umn.edu">Maria Gini</a><br>
+<font color="red">Changes and corrections are in red</font>.
+<script language="JavaScript">
+<!---//hide script from old browsers
+    document.write( "Last updated "+ document.lastModified )
+    //end hiding contents --->
+</script>Last updated 03/25/2016 15:15:19
+ </font> 
+
+
+
+</address></body></html>

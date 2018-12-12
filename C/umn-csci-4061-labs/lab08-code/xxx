@@ -1,0 +1,913 @@
+starting server
+SERVER: removed old fifos
+SERVER: created new fifos
+SERVER: opened FIFOs, listening
+8588 A CLIENT: sending request: {pid=8588  name="Jon Read" }
+8588 B CLIENT: pid 8588 stopping
+8588 B SERVER: received request {pid=8588  name="Jon Read" }
+8588 B SERVER: filling request {pid=8588  name="Jon Read"  email="readx028@umn.edu" }
+8588 B SERVER: signaling pid 8588
+8591 A CLIENT: sending request: {pid=8591  name="Christopher Jonathan" }
+8591 B CLIENT: pid 8591 stopping
+8588 B CLIENT: pid 8588 signalled to continue
+8588 C CLIENT: received response: {pid=8588  name="Jon Read" email="readx028@umn.edu"}
+8586 A CLIENT: sending request: {pid=8586  name="James Moen" }
+8586 B CLIENT: pid 8586 stopping
+8569 A CLIENT: sending request: {pid=8569  name="Chris Kauffman" }
+8571 A CLIENT: sending request: {pid=8571  name="Amy Larson" }
+8588 D CLIENT: pid 8588 indicating completion
+8574 A CLIENT: sending request: {pid=8574  name="George Karypis" }
+8577 A CLIENT: sending request: {pid=8577  name="Michael W. Whalen" }
+8593 A CLIENT: sending request: {pid=8593  name="Chris Dovolis" }
+8587 A CLIENT: sending request: {pid=8587  name="Daniel Giesel" }
+8585 A CLIENT: sending request: {pid=8585  name="James Parker" }
+8584 A CLIENT: sending request: {pid=8584  name="Shana Watters" }
+8583 A CLIENT: sending request: {pid=8583  name="Victoria Interrante" }
+8585 B CLIENT: pid 8585 stopping
+8579 A CLIENT: sending request: {pid=8579  name="Dan Challou" }
+8578 A CLIENT: sending request: {pid=8578  name="Catherine Qi Zhao" }
+8582 A CLIENT: sending request: {pid=8582  name="Jon Weissman" }
+8575 A CLIENT: sending request: {pid=8575  name="Steven Jensen" }
+8576 A CLIENT: sending request: {pid=8576  name="Daniel Keefe" }
+8590 A CLIENT: sending request: {pid=8590  name="Chris Kauffman" }
+8589 A CLIENT: sending request: {pid=8589  name="Sara Stokowski" }
+8592 A CLIENT: sending request: {pid=8592  name="Amy Larson" }
+8588 E SERVER: 8588 completion
+8591 B SERVER: received request {pid=8591  name="Christopher Jonathan" }
+8591 B SERVER: filling request {pid=8591  name="Christopher Jonathan"  email="jonat003@umn.edu" }
+8590 B CLIENT: pid 8590 stopping
+8593 B CLIENT: pid 8593 stopping
+8622 A CLIENT: sending request: {pid=8622  name="Steven Wu" }
+8624 A CLIENT: sending request: {pid=8624  name="Jon Weissman" }
+8624 B CLIENT: pid 8624 stopping
+8581 A CLIENT: sending request: {pid=8581  name="Michael Steinbach" }
+8581 B CLIENT: pid 8581 stopping
+8625 A CLIENT: sending request: {pid=8625  name="Victoria Interrante" }
+8618 A CLIENT: sending request: {pid=8618  name="Daniel Keefe" }
+8618 B CLIENT: pid 8618 stopping
+8596 A CLIENT: sending request: {pid=8596  name="Steven Jensen" }
+8596 B CLIENT: pid 8596 stopping
+8627 A CLIENT: sending request: {pid=8627  name="James Parker" }
+8626 A CLIENT: sending request: {pid=8626  name="Shana Watters" }
+8625 B CLIENT: pid 8625 stopping
+8572 A CLIENT: sending request: {pid=8572  name="Chris Dovolis" }
+8572 B CLIENT: pid 8572 stopping
+8595 A CLIENT: sending request: {pid=8595  name="George Karypis" }
+8595 B CLIENT: pid 8595 stopping
+8616 A CLIENT: sending request: {pid=8616  name="George Karypis" }
+8616 B CLIENT: pid 8616 stopping
+8633 A CLIENT: sending request: {pid=8633  name="Christopher Jonathan" }
+8631 A CLIENT: sending request: {pid=8631  name="Sara Stokowski" }
+8631 B CLIENT: pid 8631 stopping
+8573 A CLIENT: sending request: {pid=8573  name="Dan Knights" }
+8630 A CLIENT: sending request: {pid=8630  name="Jon Read" }
+8630 B CLIENT: pid 8630 stopping
+8570 A CLIENT: sending request: {pid=8570  name="Christopher Jonathan" }
+8570 B CLIENT: pid 8570 stopping
+8580 A CLIENT: sending request: {pid=8580  name="Steven Wu" }
+8580 B CLIENT: pid 8580 stopping
+8571 B CLIENT: pid 8571 stopping
+8569 B CLIENT: pid 8569 stopping
+8584 B CLIENT: pid 8584 stopping
+8583 B CLIENT: pid 8583 stopping
+8589 B CLIENT: pid 8589 stopping
+8576 B CLIENT: pid 8576 stopping
+8591 B SERVER: signaling pid 8591
+8578 B CLIENT: pid 8578 stopping
+8592 B CLIENT: pid 8592 stopping
+8591 B CLIENT: pid 8591 signalled to continue
+8591 C CLIENT: received response: {pid=8591  name="Christopher Jonathan" email="jonat003@umn.edu"}
+8582 B CLIENT: pid 8582 stopping
+8591 E SERVER: 8591 completion
+8586 B SERVER: received request {pid=8586  name="James Moen" }
+8586 B SERVER: filling request {pid=8586  name="James Moen"  email="moen0017@cs.umn.edu" }
+8586 B SERVER: signaling pid 8586
+8591 D CLIENT: pid 8591 indicating completion
+8575 B CLIENT: pid 8575 stopping
+8587 B CLIENT: pid 8587 stopping
+8586 B CLIENT: pid 8586 signalled to continue
+8586 C CLIENT: received response: {pid=8586  name="James Moen" email="moen0017@cs.umn.edu"}
+8586 E SERVER: 8586 completion
+8569 B SERVER: received request {pid=8569  name="Chris Kauffman" }
+8569 B SERVER: filling request {pid=8569  name="Chris Kauffman"  email="kauffman@umn.edu" }
+8569 B SERVER: signaling pid 8569
+8579 B CLIENT: pid 8579 stopping
+8577 B CLIENT: pid 8577 stopping
+8603 A CLIENT: sending request: {pid=8603  name="Jon Weissman" }
+8569 B CLIENT: pid 8569 signalled to continue
+8569 C CLIENT: received response: {pid=8569  name="Chris Kauffman" email="kauffman@umn.edu"}
+8603 B CLIENT: pid 8603 stopping
+8569 E SERVER: 8569 completion
+8571 B SERVER: received request {pid=8571  name="Amy Larson" }
+8571 B SERVER: filling request {pid=8571  name="Amy Larson"  email="larson@cs.umn.edu" }
+8569 D CLIENT: pid 8569 indicating completion
+8571 B SERVER: signaling pid 8571
+8613 A CLIENT: sending request: {pid=8613  name="Amy Larson" }
+8613 B CLIENT: pid 8613 stopping
+8614 A CLIENT: sending request: {pid=8614  name="Chris Dovolis" }
+8614 B CLIENT: pid 8614 stopping
+8609 A CLIENT: sending request: {pid=8609  name="Jon Read" }
+8609 B CLIENT: pid 8609 stopping
+8623 A CLIENT: sending request: {pid=8623  name="Michael Steinbach" }
+8654 A CLIENT: sending request: {pid=8654  name="Christopher Jonathan" }
+8623 B CLIENT: pid 8623 stopping
+8654 B CLIENT: pid 8654 stopping
+8621 A CLIENT: sending request: {pid=8621  name="Dan Challou" }
+8621 B CLIENT: pid 8621 stopping
+8620 A CLIENT: sending request: {pid=8620  name="Catherine Qi Zhao" }
+8620 B CLIENT: pid 8620 stopping
+8619 A CLIENT: sending request: {pid=8619  name="Michael W. Whalen" }
+8619 B CLIENT: pid 8619 stopping
+8574 B CLIENT: pid 8574 stopping
+8622 B CLIENT: pid 8622 stopping
+8628 A CLIENT: sending request: {pid=8628  name="James Moen" }
+8628 B CLIENT: pid 8628 stopping
+8629 A CLIENT: sending request: {pid=8629  name="Daniel Giesel" }
+8626 B CLIENT: pid 8626 stopping
+8629 B CLIENT: pid 8629 stopping
+8653 A CLIENT: sending request: {pid=8653  name="Chris Kauffman" }
+8653 B CLIENT: pid 8653 stopping
+8627 B CLIENT: pid 8627 stopping
+8634 A CLIENT: sending request: {pid=8634  name="Amy Larson" }
+8632 A CLIENT: sending request: {pid=8632  name="Chris Kauffman" }
+8632 B CLIENT: pid 8632 stopping
+8594 A CLIENT: sending request: {pid=8594  name="Dan Knights" }
+8594 B CLIENT: pid 8594 stopping
+8598 A CLIENT: sending request: {pid=8598  name="Michael W. Whalen" }
+8650 A CLIENT: sending request: {pid=8650  name="Daniel Giesel" }
+8650 B CLIENT: pid 8650 stopping
+8668 A CLIENT: sending request: {pid=8668  name="Shana Watters" }
+8651 A CLIENT: sending request: {pid=8651  name="Jon Read" }
+8651 B CLIENT: pid 8651 stopping
+8668 B CLIENT: pid 8668 stopping
+8602 A CLIENT: sending request: {pid=8602  name="Michael Steinbach" }
+8649 A CLIENT: sending request: {pid=8649  name="James Moen" }
+8649 B CLIENT: pid 8649 stopping
+8617 A CLIENT: sending request: {pid=8617  name="Steven Jensen" }
+8639 A CLIENT: sending request: {pid=8639  name="Daniel Keefe" }
+8612 A CLIENT: sending request: {pid=8612  name="Christopher Jonathan" }
+8612 B CLIENT: pid 8612 stopping
+8648 A CLIENT: sending request: {pid=8648  name="James Parker" }
+8597 A CLIENT: sending request: {pid=8597  name="Daniel Keefe" }
+8597 B CLIENT: pid 8597 stopping
+8652 A CLIENT: sending request: {pid=8652  name="Sara Stokowski" }
+8604 A CLIENT: sending request: {pid=8604  name="Victoria Interrante" }
+8604 B CLIENT: pid 8604 stopping
+8637 A CLIENT: sending request: {pid=8637  name="George Karypis" }
+8611 A CLIENT: sending request: {pid=8611  name="Chris Kauffman" }
+8611 B CLIENT: pid 8611 stopping
+8642 A CLIENT: sending request: {pid=8642  name="Dan Challou" }
+8605 A CLIENT: sending request: {pid=8605  name="Shana Watters" }
+8642 B CLIENT: pid 8642 stopping
+8605 B CLIENT: pid 8605 stopping
+8641 A CLIENT: sending request: {pid=8641  name="Catherine Qi Zhao" }
+8652 B CLIENT: pid 8652 stopping
+8607 A CLIENT: sending request: {pid=8607  name="James Moen" }
+8607 B CLIENT: pid 8607 stopping
+8643 A CLIENT: sending request: {pid=8643  name="Steven Wu" }
+8648 B CLIENT: pid 8648 stopping
+8643 B CLIENT: pid 8643 stopping
+8602 B CLIENT: pid 8602 stopping
+8600 A CLIENT: sending request: {pid=8600  name="Dan Challou" }
+8600 B CLIENT: pid 8600 stopping
+8644 A CLIENT: sending request: {pid=8644  name="Michael Steinbach" }
+8599 A CLIENT: sending request: {pid=8599  name="Catherine Qi Zhao" }
+8599 B CLIENT: pid 8599 stopping
+8638 A CLIENT: sending request: {pid=8638  name="Steven Jensen" }
+8606 A CLIENT: sending request: {pid=8606  name="James Parker" }
+8606 B CLIENT: pid 8606 stopping
+8640 A CLIENT: sending request: {pid=8640  name="Michael W. Whalen" }
+8608 A CLIENT: sending request: {pid=8608  name="Daniel Giesel" }
+8608 B CLIENT: pid 8608 stopping
+8647 A CLIENT: sending request: {pid=8647  name="Shana Watters" }
+8601 A CLIENT: sending request: {pid=8601  name="Steven Wu" }
+8601 B CLIENT: pid 8601 stopping
+8646 A CLIENT: sending request: {pid=8646  name="Victoria Interrante" }
+8610 A CLIENT: sending request: {pid=8610  name="Sara Stokowski" }
+8610 B CLIENT: pid 8610 stopping
+8636 A CLIENT: sending request: {pid=8636  name="Dan Knights" }
+8645 A CLIENT: sending request: {pid=8645  name="Jon Weissman" }
+8635 A CLIENT: sending request: {pid=8635  name="Chris Dovolis" }
+8615 A CLIENT: sending request: {pid=8615  name="Dan Knights" }
+8615 B CLIENT: pid 8615 stopping
+8640 B CLIENT: pid 8640 stopping
+8646 B CLIENT: pid 8646 stopping
+8667 A CLIENT: sending request: {pid=8667  name="Victoria Interrante" }
+8666 A CLIENT: sending request: {pid=8666  name="Jon Weissman" }
+8633 B CLIENT: pid 8633 stopping
+8573 B CLIENT: pid 8573 stopping
+8660 A CLIENT: sending request: {pid=8660  name="Daniel Keefe" }
+8664 A CLIENT: sending request: {pid=8664  name="Steven Wu" }
+8659 A CLIENT: sending request: {pid=8659  name="Steven Jensen" }
+8658 A CLIENT: sending request: {pid=8658  name="George Karypis" }
+8665 A CLIENT: sending request: {pid=8665  name="Michael Steinbach" }
+8657 A CLIENT: sending request: {pid=8657  name="Dan Knights" }
+8662 A CLIENT: sending request: {pid=8662  name="Catherine Qi Zhao" }
+8661 A CLIENT: sending request: {pid=8661  name="Michael W. Whalen" }
+8663 A CLIENT: sending request: {pid=8663  name="Dan Challou" }
+8659 B CLIENT: pid 8659 stopping
+8665 B CLIENT: pid 8665 stopping
+8656 A CLIENT: sending request: {pid=8656  name="Chris Dovolis" }
+8655 A CLIENT: sending request: {pid=8655  name="Amy Larson" }
+8656 B CLIENT: pid 8656 stopping
+8669 A CLIENT: sending request: {pid=8669  name="James Parker" }
+8586 D CLIENT: pid 8586 indicating completion
+8669 B CLIENT: pid 8669 stopping
+8634 B CLIENT: pid 8634 stopping
+8667 B CLIENT: pid 8667 stopping
+8571 B CLIENT: pid 8571 signalled to continue
+8571 C CLIENT: received response: {pid=8571  name="Amy Larson" email="larson@cs.umn.edu"}
+8571 E SERVER: 8571 completion
+8574 B SERVER: received request {pid=8574  name="George Karypis" }
+8574 B SERVER: filling request {pid=8574  name="George Karypis"  email="karypis@cs.umn.edu" }
+8574 B SERVER: signaling pid 8574
+8639 B CLIENT: pid 8639 stopping
+8637 B CLIENT: pid 8637 stopping
+8641 B CLIENT: pid 8641 stopping
+8617 B CLIENT: pid 8617 stopping
+8571 D CLIENT: pid 8571 indicating completion
+8598 B CLIENT: pid 8598 stopping
+8645 B CLIENT: pid 8645 stopping
+8644 B CLIENT: pid 8644 stopping
+8638 B CLIENT: pid 8638 stopping
+8635 B CLIENT: pid 8635 stopping
+8636 B CLIENT: pid 8636 stopping
+8647 B CLIENT: pid 8647 stopping
+8661 B CLIENT: pid 8661 stopping
+8658 B CLIENT: pid 8658 stopping
+8662 B CLIENT: pid 8662 stopping
+8657 B CLIENT: pid 8657 stopping
+8663 B CLIENT: pid 8663 stopping
+8664 B CLIENT: pid 8664 stopping
+8660 B CLIENT: pid 8660 stopping
+8655 B CLIENT: pid 8655 stopping
+8666 B CLIENT: pid 8666 stopping
+8574 B CLIENT: pid 8574 signalled to continue
+8574 C CLIENT: received response: {pid=8574  name="George Karypis" email="karypis@cs.umn.edu"}
+8574 D CLIENT: pid 8574 indicating completion
+8574 E SERVER: 8574 completion
+8577 B SERVER: received request {pid=8577  name="Michael W. Whalen" }
+8577 B SERVER: filling request {pid=8577  name="Michael W. Whalen"  email="whalen@cs.umn.edu" }
+8577 B SERVER: signaling pid 8577
+8577 B CLIENT: pid 8577 signalled to continue
+8577 C CLIENT: received response: {pid=8577  name="Michael W. Whalen" email="whalen@cs.umn.edu"}
+8577 E SERVER: 8577 completion
+8577 D CLIENT: pid 8577 indicating completion
+8593 B SERVER: received request {pid=8593  name="Chris Dovolis" }
+8593 B SERVER: filling request {pid=8593  name="Chris Dovolis"  email="dovolis@cs.umn.edu" }
+8593 B SERVER: signaling pid 8593
+8593 B CLIENT: pid 8593 signalled to continue
+8593 C CLIENT: received response: {pid=8593  name="Chris Dovolis" email="dovolis@cs.umn.edu"}
+8593 E SERVER: 8593 completion
+8587 B SERVER: received request {pid=8587  name="Daniel Giesel" }
+8587 B SERVER: filling request {pid=8587  name="Daniel Giesel"  email="giese138@umn.edu" }
+8587 B SERVER: signaling pid 8587
+8593 D CLIENT: pid 8593 indicating completion
+8587 B CLIENT: pid 8587 signalled to continue
+8587 C CLIENT: received response: {pid=8587  name="Daniel Giesel" email="giese138@umn.edu"}
+8587 E SERVER: 8587 completion
+8587 D CLIENT: pid 8587 indicating completion
+8585 B SERVER: received request {pid=8585  name="James Parker" }
+8585 B SERVER: filling request {pid=8585  name="James Parker"  email="jparker@cs.umn.edu" }
+8585 B SERVER: signaling pid 8585
+8585 B CLIENT: pid 8585 signalled to continue
+8585 C CLIENT: received response: {pid=8585  name="James Parker" email="jparker@cs.umn.edu"}
+8585 E SERVER: 8585 completion
+8584 B SERVER: received request {pid=8584  name="Shana Watters" }
+8584 B SERVER: filling request {pid=8584  name="Shana Watters"  email="watt0087@umn.edu" }
+8584 B SERVER: signaling pid 8584
+8585 D CLIENT: pid 8585 indicating completion
+8584 B CLIENT: pid 8584 signalled to continue
+8584 C CLIENT: received response: {pid=8584  name="Shana Watters" email="watt0087@umn.edu"}
+8584 E SERVER: 8584 completion
+8583 B SERVER: received request {pid=8583  name="Victoria Interrante" }
+8583 B SERVER: filling request {pid=8583  name="Victoria Interrante"  email="interran@cs.umn.edu" }
+8583 B SERVER: signaling pid 8583
+8584 D CLIENT: pid 8584 indicating completion
+8583 B CLIENT: pid 8583 signalled to continue
+8583 C CLIENT: received response: {pid=8583  name="Victoria Interrante" email="interran@cs.umn.edu"}
+8583 E SERVER: 8583 completion
+8579 B SERVER: received request {pid=8579  name="Dan Challou" }
+8579 B SERVER: filling request {pid=8579  name="Dan Challou"  email="challou@cs.umn.edu" }
+8579 B SERVER: signaling pid 8579
+8579 B CLIENT: pid 8579 signalled to continue
+8579 C CLIENT: received response: {pid=8579  name="Dan Challou" email="challou@cs.umn.edu"}
+8579 E SERVER: 8579 completion
+8578 B SERVER: received request {pid=8578  name="Catherine Qi Zhao" }
+8578 B SERVER: filling request {pid=8578  name="Catherine Qi Zhao"  email="qzhao@umn.edu" }
+8578 B SERVER: signaling pid 8578
+8583 D CLIENT: pid 8583 indicating completion
+8579 D CLIENT: pid 8579 indicating completion
+8578 B CLIENT: pid 8578 signalled to continue
+8578 C CLIENT: received response: {pid=8578  name="Catherine Qi Zhao" email="qzhao@umn.edu"}
+8578 D CLIENT: pid 8578 indicating completion
+8578 E SERVER: 8578 completion
+8582 B SERVER: received request {pid=8582  name="Jon Weissman" }
+8582 B SERVER: filling request {pid=8582  name="Jon Weissman"  email="jon@cs.umn.edu" }
+8582 B SERVER: signaling pid 8582
+8582 B CLIENT: pid 8582 signalled to continue
+8582 C CLIENT: received response: {pid=8582  name="Jon Weissman" email="jon@cs.umn.edu"}
+8582 E SERVER: 8582 completion
+8575 B SERVER: received request {pid=8575  name="Steven Jensen" }
+8575 B SERVER: filling request {pid=8575  name="Steven Jensen"  email="sjensen@cs.umn.edu" }
+8575 B SERVER: signaling pid 8575
+8582 D CLIENT: pid 8582 indicating completion
+8575 B CLIENT: pid 8575 signalled to continue
+8575 C CLIENT: received response: {pid=8575  name="Steven Jensen" email="sjensen@cs.umn.edu"}
+8575 E SERVER: 8575 completion
+8576 B SERVER: received request {pid=8576  name="Daniel Keefe" }
+8576 B SERVER: filling request {pid=8576  name="Daniel Keefe"  email="dfk@umn.edu" }
+8576 B SERVER: signaling pid 8576
+8575 D CLIENT: pid 8575 indicating completion
+8576 B CLIENT: pid 8576 signalled to continue
+8576 C CLIENT: received response: {pid=8576  name="Daniel Keefe" email="dfk@umn.edu"}
+8576 E SERVER: 8576 completion
+8590 B SERVER: received request {pid=8590  name="Chris Kauffman" }
+8590 B SERVER: filling request {pid=8590  name="Chris Kauffman"  email="kauffman@umn.edu" }
+8590 B SERVER: signaling pid 8590
+8576 D CLIENT: pid 8576 indicating completion
+8590 B CLIENT: pid 8590 signalled to continue
+8590 C CLIENT: received response: {pid=8590  name="Chris Kauffman" email="kauffman@umn.edu"}
+8590 E SERVER: 8590 completion
+8589 B SERVER: received request {pid=8589  name="Sara Stokowski" }
+8589 B SERVER: filling request {pid=8589  name="Sara Stokowski"  email="stoko004@umn.edu" }
+8589 B SERVER: signaling pid 8589
+8590 D CLIENT: pid 8590 indicating completion
+8589 B CLIENT: pid 8589 signalled to continue
+8589 C CLIENT: received response: {pid=8589  name="Sara Stokowski" email="stoko004@umn.edu"}
+8589 E SERVER: 8589 completion
+8592 B SERVER: received request {pid=8592  name="Amy Larson" }
+8592 B SERVER: filling request {pid=8592  name="Amy Larson"  email="larson@cs.umn.edu" }
+8592 B SERVER: signaling pid 8592
+8589 D CLIENT: pid 8589 indicating completion
+8592 B CLIENT: pid 8592 signalled to continue
+8592 C CLIENT: received response: {pid=8592  name="Amy Larson" email="larson@cs.umn.edu"}
+8592 E SERVER: 8592 completion
+8622 B SERVER: received request {pid=8622  name="Steven Wu" }
+8622 B SERVER: filling request {pid=8622  name="Steven Wu"  email="zsw@umn.edu" }
+8622 B SERVER: signaling pid 8622
+8592 D CLIENT: pid 8592 indicating completion
+8622 B CLIENT: pid 8622 signalled to continue
+8622 C CLIENT: received response: {pid=8622  name="Steven Wu" email="zsw@umn.edu"}
+8622 D CLIENT: pid 8622 indicating completion
+8622 E SERVER: 8622 completion
+8624 B SERVER: received request {pid=8624  name="Jon Weissman" }
+8624 B SERVER: filling request {pid=8624  name="Jon Weissman"  email="jon@cs.umn.edu" }
+8624 B SERVER: signaling pid 8624
+8624 B CLIENT: pid 8624 signalled to continue
+8624 C CLIENT: received response: {pid=8624  name="Jon Weissman" email="jon@cs.umn.edu"}
+8624 E SERVER: 8624 completion
+8581 B SERVER: received request {pid=8581  name="Michael Steinbach" }
+8581 B SERVER: filling request {pid=8581  name="Michael Steinbach"  email="steinbac@cs.umn.edu" }
+8581 B SERVER: signaling pid 8581
+8624 D CLIENT: pid 8624 indicating completion
+8581 B CLIENT: pid 8581 signalled to continue
+8581 C CLIENT: received response: {pid=8581  name="Michael Steinbach" email="steinbac@cs.umn.edu"}
+8581 E SERVER: 8581 completion
+8625 B SERVER: received request {pid=8625  name="Victoria Interrante" }
+8625 B SERVER: filling request {pid=8625  name="Victoria Interrante"  email="interran@cs.umn.edu" }
+8625 B SERVER: signaling pid 8625
+8581 D CLIENT: pid 8581 indicating completion
+8625 B CLIENT: pid 8625 signalled to continue
+8625 C CLIENT: received response: {pid=8625  name="Victoria Interrante" email="interran@cs.umn.edu"}
+8625 E SERVER: 8625 completion
+8618 B SERVER: received request {pid=8618  name="Daniel Keefe" }
+8618 B SERVER: filling request {pid=8618  name="Daniel Keefe"  email="dfk@umn.edu" }
+8618 B SERVER: signaling pid 8618
+8625 D CLIENT: pid 8625 indicating completion
+8618 B CLIENT: pid 8618 signalled to continue
+8618 C CLIENT: received response: {pid=8618  name="Daniel Keefe" email="dfk@umn.edu"}
+8618 E SERVER: 8618 completion
+8596 B SERVER: received request {pid=8596  name="Steven Jensen" }
+8596 B SERVER: filling request {pid=8596  name="Steven Jensen"  email="sjensen@cs.umn.edu" }
+8596 B SERVER: signaling pid 8596
+8618 D CLIENT: pid 8618 indicating completion
+8596 B CLIENT: pid 8596 signalled to continue
+8596 C CLIENT: received response: {pid=8596  name="Steven Jensen" email="sjensen@cs.umn.edu"}
+8596 E SERVER: 8596 completion
+8627 B SERVER: received request {pid=8627  name="James Parker" }
+8627 B SERVER: filling request {pid=8627  name="James Parker"  email="jparker@cs.umn.edu" }
+8627 B SERVER: signaling pid 8627
+8596 D CLIENT: pid 8596 indicating completion
+8627 B CLIENT: pid 8627 signalled to continue
+8627 C CLIENT: received response: {pid=8627  name="James Parker" email="jparker@cs.umn.edu"}
+8627 E SERVER: 8627 completion
+8626 B SERVER: received request {pid=8626  name="Shana Watters" }
+8626 B SERVER: filling request {pid=8626  name="Shana Watters"  email="watt0087@umn.edu" }
+8626 B SERVER: signaling pid 8626
+8627 D CLIENT: pid 8627 indicating completion
+8626 B CLIENT: pid 8626 signalled to continue
+8626 C CLIENT: received response: {pid=8626  name="Shana Watters" email="watt0087@umn.edu"}
+8626 E SERVER: 8626 completion
+8572 B SERVER: received request {pid=8572  name="Chris Dovolis" }
+8572 B SERVER: filling request {pid=8572  name="Chris Dovolis"  email="dovolis@cs.umn.edu" }
+8572 B SERVER: signaling pid 8572
+8626 D CLIENT: pid 8626 indicating completion
+8572 B CLIENT: pid 8572 signalled to continue
+8572 C CLIENT: received response: {pid=8572  name="Chris Dovolis" email="dovolis@cs.umn.edu"}
+8572 E SERVER: 8572 completion
+8595 B SERVER: received request {pid=8595  name="George Karypis" }
+8595 B SERVER: filling request {pid=8595  name="George Karypis"  email="karypis@cs.umn.edu" }
+8595 B SERVER: signaling pid 8595
+8572 D CLIENT: pid 8572 indicating completion
+8595 B CLIENT: pid 8595 signalled to continue
+8595 C CLIENT: received response: {pid=8595  name="George Karypis" email="karypis@cs.umn.edu"}
+8595 D CLIENT: pid 8595 indicating completion
+8595 E SERVER: 8595 completion
+8616 B SERVER: received request {pid=8616  name="George Karypis" }
+8616 B SERVER: filling request {pid=8616  name="George Karypis"  email="karypis@cs.umn.edu" }
+8616 B SERVER: signaling pid 8616
+8616 B CLIENT: pid 8616 signalled to continue
+8616 C CLIENT: received response: {pid=8616  name="George Karypis" email="karypis@cs.umn.edu"}
+8616 E SERVER: 8616 completion
+8633 B SERVER: received request {pid=8633  name="Christopher Jonathan" }
+8633 B SERVER: filling request {pid=8633  name="Christopher Jonathan"  email="jonat003@umn.edu" }
+8633 B SERVER: signaling pid 8633
+8616 D CLIENT: pid 8616 indicating completion
+8633 B CLIENT: pid 8633 signalled to continue
+8633 C CLIENT: received response: {pid=8633  name="Christopher Jonathan" email="jonat003@umn.edu"}
+8633 E SERVER: 8633 completion
+8631 B SERVER: received request {pid=8631  name="Sara Stokowski" }
+8631 B SERVER: filling request {pid=8631  name="Sara Stokowski"  email="stoko004@umn.edu" }
+8631 B SERVER: signaling pid 8631
+8633 D CLIENT: pid 8633 indicating completion
+8631 B CLIENT: pid 8631 signalled to continue
+8631 C CLIENT: received response: {pid=8631  name="Sara Stokowski" email="stoko004@umn.edu"}
+8631 E SERVER: 8631 completion
+8630 B SERVER: received request {pid=8630  name="Jon Read" }
+8630 B SERVER: filling request {pid=8630  name="Jon Read"  email="readx028@umn.edu" }
+8630 B SERVER: signaling pid 8630
+8631 D CLIENT: pid 8631 indicating completion
+8630 B CLIENT: pid 8630 signalled to continue
+8630 C CLIENT: received response: {pid=8630  name="Jon Read" email="readx028@umn.edu"}
+8630 E SERVER: 8630 completion
+8573 B SERVER: received request {pid=8573  name="Dan Knights" }
+8573 B SERVER: filling request {pid=8573  name="Dan Knights"  email="knights@cs.umn.edu" }
+8573 B SERVER: signaling pid 8573
+8630 D CLIENT: pid 8630 indicating completion
+8573 B CLIENT: pid 8573 signalled to continue
+8573 C CLIENT: received response: {pid=8573  name="Dan Knights" email="knights@cs.umn.edu"}
+8573 E SERVER: 8573 completion
+8570 B SERVER: received request {pid=8570  name="Christopher Jonathan" }
+8570 B SERVER: filling request {pid=8570  name="Christopher Jonathan"  email="jonat003@umn.edu" }
+8570 B SERVER: signaling pid 8570
+8573 D CLIENT: pid 8573 indicating completion
+8570 B CLIENT: pid 8570 signalled to continue
+8570 C CLIENT: received response: {pid=8570  name="Christopher Jonathan" email="jonat003@umn.edu"}
+8570 E SERVER: 8570 completion
+8580 B SERVER: received request {pid=8580  name="Steven Wu" }
+8580 B SERVER: filling request {pid=8580  name="Steven Wu"  email="zsw@umn.edu" }
+8580 B SERVER: signaling pid 8580
+8570 D CLIENT: pid 8570 indicating completion
+8580 B CLIENT: pid 8580 signalled to continue
+8580 C CLIENT: received response: {pid=8580  name="Steven Wu" email="zsw@umn.edu"}
+8580 E SERVER: 8580 completion
+8603 B SERVER: received request {pid=8603  name="Jon Weissman" }
+8603 B SERVER: filling request {pid=8603  name="Jon Weissman"  email="jon@cs.umn.edu" }
+8603 B SERVER: signaling pid 8603
+8580 D CLIENT: pid 8580 indicating completion
+8603 B CLIENT: pid 8603 signalled to continue
+8603 C CLIENT: received response: {pid=8603  name="Jon Weissman" email="jon@cs.umn.edu"}
+8603 E SERVER: 8603 completion
+8613 B SERVER: received request {pid=8613  name="Amy Larson" }
+8613 B SERVER: filling request {pid=8613  name="Amy Larson"  email="larson@cs.umn.edu" }
+8613 B SERVER: signaling pid 8613
+8603 D CLIENT: pid 8603 indicating completion
+8613 B CLIENT: pid 8613 signalled to continue
+8613 C CLIENT: received response: {pid=8613  name="Amy Larson" email="larson@cs.umn.edu"}
+8613 E SERVER: 8613 completion
+8614 B SERVER: received request {pid=8614  name="Chris Dovolis" }
+8614 B SERVER: filling request {pid=8614  name="Chris Dovolis"  email="dovolis@cs.umn.edu" }
+8614 B SERVER: signaling pid 8614
+8613 D CLIENT: pid 8613 indicating completion
+8614 B CLIENT: pid 8614 signalled to continue
+8614 C CLIENT: received response: {pid=8614  name="Chris Dovolis" email="dovolis@cs.umn.edu"}
+8614 E SERVER: 8614 completion
+8609 B SERVER: received request {pid=8609  name="Jon Read" }
+8609 B SERVER: filling request {pid=8609  name="Jon Read"  email="readx028@umn.edu" }
+8609 B SERVER: signaling pid 8609
+8614 D CLIENT: pid 8614 indicating completion
+8609 B CLIENT: pid 8609 signalled to continue
+8609 C CLIENT: received response: {pid=8609  name="Jon Read" email="readx028@umn.edu"}
+8609 E SERVER: 8609 completion
+8623 B SERVER: received request {pid=8623  name="Michael Steinbach" }
+8623 B SERVER: filling request {pid=8623  name="Michael Steinbach"  email="steinbac@cs.umn.edu" }
+8623 B SERVER: signaling pid 8623
+8609 D CLIENT: pid 8609 indicating completion
+8623 B CLIENT: pid 8623 signalled to continue
+8623 C CLIENT: received response: {pid=8623  name="Michael Steinbach" email="steinbac@cs.umn.edu"}
+8623 E SERVER: 8623 completion
+8654 B SERVER: received request {pid=8654  name="Christopher Jonathan" }
+8654 B SERVER: filling request {pid=8654  name="Christopher Jonathan"  email="jonat003@umn.edu" }
+8654 B SERVER: signaling pid 8654
+8623 D CLIENT: pid 8623 indicating completion
+8654 B CLIENT: pid 8654 signalled to continue
+8654 C CLIENT: received response: {pid=8654  name="Christopher Jonathan" email="jonat003@umn.edu"}
+8654 E SERVER: 8654 completion
+8621 B SERVER: received request {pid=8621  name="Dan Challou" }
+8621 B SERVER: filling request {pid=8621  name="Dan Challou"  email="challou@cs.umn.edu" }
+8621 B SERVER: signaling pid 8621
+8654 D CLIENT: pid 8654 indicating completion
+8621 B CLIENT: pid 8621 signalled to continue
+8621 C CLIENT: received response: {pid=8621  name="Dan Challou" email="challou@cs.umn.edu"}
+8621 E SERVER: 8621 completion
+8620 B SERVER: received request {pid=8620  name="Catherine Qi Zhao" }
+8620 B SERVER: filling request {pid=8620  name="Catherine Qi Zhao"  email="qzhao@umn.edu" }
+8620 B SERVER: signaling pid 8620
+8621 D CLIENT: pid 8621 indicating completion
+8620 B CLIENT: pid 8620 signalled to continue
+8620 C CLIENT: received response: {pid=8620  name="Catherine Qi Zhao" email="qzhao@umn.edu"}
+8620 E SERVER: 8620 completion
+8619 B SERVER: received request {pid=8619  name="Michael W. Whalen" }
+8619 B SERVER: filling request {pid=8619  name="Michael W. Whalen"  email="whalen@cs.umn.edu" }
+8619 B SERVER: signaling pid 8619
+8620 D CLIENT: pid 8620 indicating completion
+8619 B CLIENT: pid 8619 signalled to continue
+8619 C CLIENT: received response: {pid=8619  name="Michael W. Whalen" email="whalen@cs.umn.edu"}
+8619 D CLIENT: pid 8619 indicating completion
+8619 E SERVER: 8619 completion
+8628 B SERVER: received request {pid=8628  name="James Moen" }
+8628 B SERVER: filling request {pid=8628  name="James Moen"  email="moen0017@cs.umn.edu" }
+8628 B SERVER: signaling pid 8628
+8628 B CLIENT: pid 8628 signalled to continue
+8628 C CLIENT: received response: {pid=8628  name="James Moen" email="moen0017@cs.umn.edu"}
+8628 E SERVER: 8628 completion
+8629 B SERVER: received request {pid=8629  name="Daniel Giesel" }
+8629 B SERVER: filling request {pid=8629  name="Daniel Giesel"  email="giese138@umn.edu" }
+8629 B SERVER: signaling pid 8629
+8628 D CLIENT: pid 8628 indicating completion
+8629 B CLIENT: pid 8629 signalled to continue
+8629 C CLIENT: received response: {pid=8629  name="Daniel Giesel" email="giese138@umn.edu"}
+8629 E SERVER: 8629 completion
+8653 B SERVER: received request {pid=8653  name="Chris Kauffman" }
+8653 B SERVER: filling request {pid=8653  name="Chris Kauffman"  email="kauffman@umn.edu" }
+8653 B SERVER: signaling pid 8653
+8629 D CLIENT: pid 8629 indicating completion
+8653 B CLIENT: pid 8653 signalled to continue
+8653 C CLIENT: received response: {pid=8653  name="Chris Kauffman" email="kauffman@umn.edu"}
+8653 E SERVER: 8653 completion
+8634 B SERVER: received request {pid=8634  name="Amy Larson" }
+8634 B SERVER: filling request {pid=8634  name="Amy Larson"  email="larson@cs.umn.edu" }
+8634 B SERVER: signaling pid 8634
+8653 D CLIENT: pid 8653 indicating completion
+8634 B CLIENT: pid 8634 signalled to continue
+8634 C CLIENT: received response: {pid=8634  name="Amy Larson" email="larson@cs.umn.edu"}
+8634 E SERVER: 8634 completion
+8632 B SERVER: received request {pid=8632  name="Chris Kauffman" }
+8632 B SERVER: filling request {pid=8632  name="Chris Kauffman"  email="kauffman@umn.edu" }
+8632 B SERVER: signaling pid 8632
+8634 D CLIENT: pid 8634 indicating completion
+8632 B CLIENT: pid 8632 signalled to continue
+8632 C CLIENT: received response: {pid=8632  name="Chris Kauffman" email="kauffman@umn.edu"}
+8632 E SERVER: 8632 completion
+8594 B SERVER: received request {pid=8594  name="Dan Knights" }
+8594 B SERVER: filling request {pid=8594  name="Dan Knights"  email="knights@cs.umn.edu" }
+8594 B SERVER: signaling pid 8594
+8632 D CLIENT: pid 8632 indicating completion
+8594 B CLIENT: pid 8594 signalled to continue
+8594 C CLIENT: received response: {pid=8594  name="Dan Knights" email="knights@cs.umn.edu"}
+8594 E SERVER: 8594 completion
+8598 B SERVER: received request {pid=8598  name="Michael W. Whalen" }
+8598 B SERVER: filling request {pid=8598  name="Michael W. Whalen"  email="whalen@cs.umn.edu" }
+8598 B SERVER: signaling pid 8598
+8594 D CLIENT: pid 8594 indicating completion
+8598 B CLIENT: pid 8598 signalled to continue
+8598 C CLIENT: received response: {pid=8598  name="Michael W. Whalen" email="whalen@cs.umn.edu"}
+8598 E SERVER: 8598 completion
+8650 B SERVER: received request {pid=8650  name="Daniel Giesel" }
+8650 B SERVER: filling request {pid=8650  name="Daniel Giesel"  email="giese138@umn.edu" }
+8650 B SERVER: signaling pid 8650
+8598 D CLIENT: pid 8598 indicating completion
+8650 B CLIENT: pid 8650 signalled to continue
+8650 C CLIENT: received response: {pid=8650  name="Daniel Giesel" email="giese138@umn.edu"}
+8650 E SERVER: 8650 completion
+8668 B SERVER: received request {pid=8668  name="Shana Watters" }
+8668 B SERVER: filling request {pid=8668  name="Shana Watters"  email="watt0087@umn.edu" }
+8668 B SERVER: signaling pid 8668
+8650 D CLIENT: pid 8650 indicating completion
+8668 B CLIENT: pid 8668 signalled to continue
+8668 C CLIENT: received response: {pid=8668  name="Shana Watters" email="watt0087@umn.edu"}
+8668 E SERVER: 8668 completion
+8651 B SERVER: received request {pid=8651  name="Jon Read" }
+8651 B SERVER: filling request {pid=8651  name="Jon Read"  email="readx028@umn.edu" }
+8651 B SERVER: signaling pid 8651
+8668 D CLIENT: pid 8668 indicating completion
+8651 B CLIENT: pid 8651 signalled to continue
+8651 C CLIENT: received response: {pid=8651  name="Jon Read" email="readx028@umn.edu"}
+8651 E SERVER: 8651 completion
+8602 B SERVER: received request {pid=8602  name="Michael Steinbach" }
+8602 B SERVER: filling request {pid=8602  name="Michael Steinbach"  email="steinbac@cs.umn.edu" }
+8602 B SERVER: signaling pid 8602
+8651 D CLIENT: pid 8651 indicating completion
+8602 B CLIENT: pid 8602 signalled to continue
+8602 C CLIENT: received response: {pid=8602  name="Michael Steinbach" email="steinbac@cs.umn.edu"}
+8602 D CLIENT: pid 8602 indicating completion
+8602 E SERVER: 8602 completion
+8649 B SERVER: received request {pid=8649  name="James Moen" }
+8649 B SERVER: filling request {pid=8649  name="James Moen"  email="moen0017@cs.umn.edu" }
+8649 B SERVER: signaling pid 8649
+8649 B CLIENT: pid 8649 signalled to continue
+8649 C CLIENT: received response: {pid=8649  name="James Moen" email="moen0017@cs.umn.edu"}
+8649 E SERVER: 8649 completion
+8649 D CLIENT: pid 8649 indicating completion
+8617 B SERVER: received request {pid=8617  name="Steven Jensen" }
+8617 B SERVER: filling request {pid=8617  name="Steven Jensen"  email="sjensen@cs.umn.edu" }
+8617 B SERVER: signaling pid 8617
+8617 B CLIENT: pid 8617 signalled to continue
+8617 C CLIENT: received response: {pid=8617  name="Steven Jensen" email="sjensen@cs.umn.edu"}
+8617 E SERVER: 8617 completion
+8639 B SERVER: received request {pid=8639  name="Daniel Keefe" }
+8639 B SERVER: filling request {pid=8639  name="Daniel Keefe"  email="dfk@umn.edu" }
+8639 B SERVER: signaling pid 8639
+8617 D CLIENT: pid 8617 indicating completion
+8639 B CLIENT: pid 8639 signalled to continue
+8639 C CLIENT: received response: {pid=8639  name="Daniel Keefe" email="dfk@umn.edu"}
+8639 E SERVER: 8639 completion
+8639 D CLIENT: pid 8639 indicating completion
+8612 B SERVER: received request {pid=8612  name="Christopher Jonathan" }
+8612 B SERVER: filling request {pid=8612  name="Christopher Jonathan"  email="jonat003@umn.edu" }
+8612 B SERVER: signaling pid 8612
+8612 B CLIENT: pid 8612 signalled to continue
+8612 C CLIENT: received response: {pid=8612  name="Christopher Jonathan" email="jonat003@umn.edu"}
+8612 E SERVER: 8612 completion
+8648 B SERVER: received request {pid=8648  name="James Parker" }
+8648 B SERVER: filling request {pid=8648  name="James Parker"  email="jparker@cs.umn.edu" }
+8648 B SERVER: signaling pid 8648
+8612 D CLIENT: pid 8612 indicating completion
+8648 B CLIENT: pid 8648 signalled to continue
+8648 C CLIENT: received response: {pid=8648  name="James Parker" email="jparker@cs.umn.edu"}
+8648 E SERVER: 8648 completion
+8597 B SERVER: received request {pid=8597  name="Daniel Keefe" }
+8597 B SERVER: filling request {pid=8597  name="Daniel Keefe"  email="dfk@umn.edu" }
+8597 B SERVER: signaling pid 8597
+8648 D CLIENT: pid 8648 indicating completion
+8597 B CLIENT: pid 8597 signalled to continue
+8597 C CLIENT: received response: {pid=8597  name="Daniel Keefe" email="dfk@umn.edu"}
+8597 E SERVER: 8597 completion
+8652 B SERVER: received request {pid=8652  name="Sara Stokowski" }
+8652 B SERVER: filling request {pid=8652  name="Sara Stokowski"  email="stoko004@umn.edu" }
+8652 B SERVER: signaling pid 8652
+8597 D CLIENT: pid 8597 indicating completion
+8652 B CLIENT: pid 8652 signalled to continue
+8652 C CLIENT: received response: {pid=8652  name="Sara Stokowski" email="stoko004@umn.edu"}
+8652 E SERVER: 8652 completion
+8604 B SERVER: received request {pid=8604  name="Victoria Interrante" }
+8604 B SERVER: filling request {pid=8604  name="Victoria Interrante"  email="interran@cs.umn.edu" }
+8604 B SERVER: signaling pid 8604
+8652 D CLIENT: pid 8652 indicating completion
+8604 B CLIENT: pid 8604 signalled to continue
+8604 C CLIENT: received response: {pid=8604  name="Victoria Interrante" email="interran@cs.umn.edu"}
+8604 E SERVER: 8604 completion
+8637 B SERVER: received request {pid=8637  name="George Karypis" }
+8637 B SERVER: filling request {pid=8637  name="George Karypis"  email="karypis@cs.umn.edu" }
+8637 B SERVER: signaling pid 8637
+8604 D CLIENT: pid 8604 indicating completion
+8637 B CLIENT: pid 8637 signalled to continue
+8637 C CLIENT: received response: {pid=8637  name="George Karypis" email="karypis@cs.umn.edu"}
+8637 E SERVER: 8637 completion
+8611 B SERVER: received request {pid=8611  name="Chris Kauffman" }
+8611 B SERVER: filling request {pid=8611  name="Chris Kauffman"  email="kauffman@umn.edu" }
+8611 B SERVER: signaling pid 8611
+8637 D CLIENT: pid 8637 indicating completion
+8611 B CLIENT: pid 8611 signalled to continue
+8611 C CLIENT: received response: {pid=8611  name="Chris Kauffman" email="kauffman@umn.edu"}
+8611 E SERVER: 8611 completion
+8642 B SERVER: received request {pid=8642  name="Dan Challou" }
+8642 B SERVER: filling request {pid=8642  name="Dan Challou"  email="challou@cs.umn.edu" }
+8642 B SERVER: signaling pid 8642
+8611 D CLIENT: pid 8611 indicating completion
+8642 B CLIENT: pid 8642 signalled to continue
+8642 C CLIENT: received response: {pid=8642  name="Dan Challou" email="challou@cs.umn.edu"}
+8642 E SERVER: 8642 completion
+8605 B SERVER: received request {pid=8605  name="Shana Watters" }
+8605 B SERVER: filling request {pid=8605  name="Shana Watters"  email="watt0087@umn.edu" }
+8605 B SERVER: signaling pid 8605
+8642 D CLIENT: pid 8642 indicating completion
+8605 B CLIENT: pid 8605 signalled to continue
+8605 C CLIENT: received response: {pid=8605  name="Shana Watters" email="watt0087@umn.edu"}
+8605 E SERVER: 8605 completion
+8641 B SERVER: received request {pid=8641  name="Catherine Qi Zhao" }
+8641 B SERVER: filling request {pid=8641  name="Catherine Qi Zhao"  email="qzhao@umn.edu" }
+8641 B SERVER: signaling pid 8641
+8605 D CLIENT: pid 8605 indicating completion
+8641 B CLIENT: pid 8641 signalled to continue
+8641 C CLIENT: received response: {pid=8641  name="Catherine Qi Zhao" email="qzhao@umn.edu"}
+8641 E SERVER: 8641 completion
+8607 B SERVER: received request {pid=8607  name="James Moen" }
+8641 D CLIENT: pid 8641 indicating completion
+8607 B SERVER: filling request {pid=8607  name="James Moen"  email="moen0017@cs.umn.edu" }
+8607 B SERVER: signaling pid 8607
+8607 B CLIENT: pid 8607 signalled to continue
+8607 C CLIENT: received response: {pid=8607  name="James Moen" email="moen0017@cs.umn.edu"}
+8607 E SERVER: 8607 completion
+8643 B SERVER: received request {pid=8643  name="Steven Wu" }
+8643 B SERVER: filling request {pid=8643  name="Steven Wu"  email="zsw@umn.edu" }
+8643 B SERVER: signaling pid 8643
+8607 D CLIENT: pid 8607 indicating completion
+8643 B CLIENT: pid 8643 signalled to continue
+8643 C CLIENT: received response: {pid=8643  name="Steven Wu" email="zsw@umn.edu"}
+8643 E SERVER: 8643 completion
+8643 D CLIENT: pid 8643 indicating completion
+8600 B SERVER: received request {pid=8600  name="Dan Challou" }
+8600 B SERVER: filling request {pid=8600  name="Dan Challou"  email="challou@cs.umn.edu" }
+8600 B SERVER: signaling pid 8600
+8600 B CLIENT: pid 8600 signalled to continue
+8600 C CLIENT: received response: {pid=8600  name="Dan Challou" email="challou@cs.umn.edu"}
+8600 E SERVER: 8600 completion
+8644 B SERVER: received request {pid=8644  name="Michael Steinbach" }
+8644 B SERVER: filling request {pid=8644  name="Michael Steinbach"  email="steinbac@cs.umn.edu" }
+8644 B SERVER: signaling pid 8644
+8600 D CLIENT: pid 8600 indicating completion
+8644 B CLIENT: pid 8644 signalled to continue
+8644 C CLIENT: received response: {pid=8644  name="Michael Steinbach" email="steinbac@cs.umn.edu"}
+8644 E SERVER: 8644 completion
+8599 B SERVER: received request {pid=8599  name="Catherine Qi Zhao" }
+8599 B SERVER: filling request {pid=8599  name="Catherine Qi Zhao"  email="qzhao@umn.edu" }
+8599 B SERVER: signaling pid 8599
+8644 D CLIENT: pid 8644 indicating completion
+8599 B CLIENT: pid 8599 signalled to continue
+8599 C CLIENT: received response: {pid=8599  name="Catherine Qi Zhao" email="qzhao@umn.edu"}
+8599 E SERVER: 8599 completion
+8638 B SERVER: received request {pid=8638  name="Steven Jensen" }
+8599 D CLIENT: pid 8599 indicating completion
+8638 B SERVER: filling request {pid=8638  name="Steven Jensen"  email="sjensen@cs.umn.edu" }
+8638 B SERVER: signaling pid 8638
+8638 B CLIENT: pid 8638 signalled to continue
+8638 C CLIENT: received response: {pid=8638  name="Steven Jensen" email="sjensen@cs.umn.edu"}
+8638 E SERVER: 8638 completion
+8606 B SERVER: received request {pid=8606  name="James Parker" }
+8606 B SERVER: filling request {pid=8606  name="James Parker"  email="jparker@cs.umn.edu" }
+8606 B SERVER: signaling pid 8606
+8638 D CLIENT: pid 8638 indicating completion
+8606 B CLIENT: pid 8606 signalled to continue
+8606 C CLIENT: received response: {pid=8606  name="James Parker" email="jparker@cs.umn.edu"}
+8606 E SERVER: 8606 completion
+8640 B SERVER: received request {pid=8640  name="Michael W. Whalen" }
+8640 B SERVER: filling request {pid=8640  name="Michael W. Whalen"  email="whalen@cs.umn.edu" }
+8640 B SERVER: signaling pid 8640
+8606 D CLIENT: pid 8606 indicating completion
+8640 B CLIENT: pid 8640 signalled to continue
+8640 C CLIENT: received response: {pid=8640  name="Michael W. Whalen" email="whalen@cs.umn.edu"}
+8640 E SERVER: 8640 completion
+8608 B SERVER: received request {pid=8608  name="Daniel Giesel" }
+8608 B SERVER: filling request {pid=8608  name="Daniel Giesel"  email="giese138@umn.edu" }
+8608 B SERVER: signaling pid 8608
+8640 D CLIENT: pid 8640 indicating completion
+8608 B CLIENT: pid 8608 signalled to continue
+8608 C CLIENT: received response: {pid=8608  name="Daniel Giesel" email="giese138@umn.edu"}
+8608 D CLIENT: pid 8608 indicating completion
+8608 E SERVER: 8608 completion
+8647 B SERVER: received request {pid=8647  name="Shana Watters" }
+8647 B SERVER: filling request {pid=8647  name="Shana Watters"  email="watt0087@umn.edu" }
+8647 B SERVER: signaling pid 8647
+8647 B CLIENT: pid 8647 signalled to continue
+8647 C CLIENT: received response: {pid=8647  name="Shana Watters" email="watt0087@umn.edu"}
+8647 D CLIENT: pid 8647 indicating completion
+8647 E SERVER: 8647 completion
+8601 B SERVER: received request {pid=8601  name="Steven Wu" }
+8601 B SERVER: filling request {pid=8601  name="Steven Wu"  email="zsw@umn.edu" }
+8601 B SERVER: signaling pid 8601
+8601 B CLIENT: pid 8601 signalled to continue
+8601 C CLIENT: received response: {pid=8601  name="Steven Wu" email="zsw@umn.edu"}
+8601 E SERVER: 8601 completion
+8646 B SERVER: received request {pid=8646  name="Victoria Interrante" }
+8646 B SERVER: filling request {pid=8646  name="Victoria Interrante"  email="interran@cs.umn.edu" }
+8646 B SERVER: signaling pid 8646
+8601 D CLIENT: pid 8601 indicating completion
+8646 B CLIENT: pid 8646 signalled to continue
+8646 C CLIENT: received response: {pid=8646  name="Victoria Interrante" email="interran@cs.umn.edu"}
+8646 E SERVER: 8646 completion
+8610 B SERVER: received request {pid=8610  name="Sara Stokowski" }
+8610 B SERVER: filling request {pid=8610  name="Sara Stokowski"  email="stoko004@umn.edu" }
+8610 B SERVER: signaling pid 8610
+8646 D CLIENT: pid 8646 indicating completion
+8610 B CLIENT: pid 8610 signalled to continue
+8610 C CLIENT: received response: {pid=8610  name="Sara Stokowski" email="stoko004@umn.edu"}
+8610 E SERVER: 8610 completion
+8636 B SERVER: received request {pid=8636  name="Dan Knights" }
+8610 D CLIENT: pid 8610 indicating completion
+8636 B SERVER: filling request {pid=8636  name="Dan Knights"  email="knights@cs.umn.edu" }
+8636 B SERVER: signaling pid 8636
+8636 B CLIENT: pid 8636 signalled to continue
+8636 C CLIENT: received response: {pid=8636  name="Dan Knights" email="knights@cs.umn.edu"}
+8636 E SERVER: 8636 completion
+8636 D CLIENT: pid 8636 indicating completion
+8645 B SERVER: received request {pid=8645  name="Jon Weissman" }
+8645 B SERVER: filling request {pid=8645  name="Jon Weissman"  email="jon@cs.umn.edu" }
+8645 B SERVER: signaling pid 8645
+8645 B CLIENT: pid 8645 signalled to continue
+8645 C CLIENT: received response: {pid=8645  name="Jon Weissman" email="jon@cs.umn.edu"}
+8645 E SERVER: 8645 completion
+8635 B SERVER: received request {pid=8635  name="Chris Dovolis" }
+8635 B SERVER: filling request {pid=8635  name="Chris Dovolis"  email="dovolis@cs.umn.edu" }
+8635 B SERVER: signaling pid 8635
+8645 D CLIENT: pid 8645 indicating completion
+8635 B CLIENT: pid 8635 signalled to continue
+8635 C CLIENT: received response: {pid=8635  name="Chris Dovolis" email="dovolis@cs.umn.edu"}
+8635 E SERVER: 8635 completion
+8615 B SERVER: received request {pid=8615  name="Dan Knights" }
+8615 B SERVER: filling request {pid=8615  name="Dan Knights"  email="knights@cs.umn.edu" }
+8615 B SERVER: signaling pid 8615
+8635 D CLIENT: pid 8635 indicating completion
+8615 B CLIENT: pid 8615 signalled to continue
+8615 C CLIENT: received response: {pid=8615  name="Dan Knights" email="knights@cs.umn.edu"}
+8615 E SERVER: 8615 completion
+8667 B SERVER: received request {pid=8667  name="Victoria Interrante" }
+8667 B SERVER: filling request {pid=8667  name="Victoria Interrante"  email="interran@cs.umn.edu" }
+8667 B SERVER: signaling pid 8667
+8615 D CLIENT: pid 8615 indicating completion
+8667 B CLIENT: pid 8667 signalled to continue
+8667 C CLIENT: received response: {pid=8667  name="Victoria Interrante" email="interran@cs.umn.edu"}
+8667 E SERVER: 8667 completion
+8666 B SERVER: received request {pid=8666  name="Jon Weissman" }
+8666 B SERVER: filling request {pid=8666  name="Jon Weissman"  email="jon@cs.umn.edu" }
+8666 B SERVER: signaling pid 8666
+8667 D CLIENT: pid 8667 indicating completion
+8666 B CLIENT: pid 8666 signalled to continue
+8666 C CLIENT: received response: {pid=8666  name="Jon Weissman" email="jon@cs.umn.edu"}
+8666 E SERVER: 8666 completion
+8660 B SERVER: received request {pid=8660  name="Daniel Keefe" }
+8660 B SERVER: filling request {pid=8660  name="Daniel Keefe"  email="dfk@umn.edu" }
+8660 B SERVER: signaling pid 8660
+8666 D CLIENT: pid 8666 indicating completion
+8660 B CLIENT: pid 8660 signalled to continue
+8660 C CLIENT: received response: {pid=8660  name="Daniel Keefe" email="dfk@umn.edu"}
+8660 E SERVER: 8660 completion
+8664 B SERVER: received request {pid=8664  name="Steven Wu" }
+8664 B SERVER: filling request {pid=8664  name="Steven Wu"  email="zsw@umn.edu" }
+8660 D CLIENT: pid 8660 indicating completion
+8664 B SERVER: signaling pid 8664
+8664 B CLIENT: pid 8664 signalled to continue
+8664 C CLIENT: received response: {pid=8664  name="Steven Wu" email="zsw@umn.edu"}
+8664 D CLIENT: pid 8664 indicating completion
+8664 E SERVER: 8664 completion
+8659 B SERVER: received request {pid=8659  name="Steven Jensen" }
+8659 B SERVER: filling request {pid=8659  name="Steven Jensen"  email="sjensen@cs.umn.edu" }
+8659 B SERVER: signaling pid 8659
+8659 B CLIENT: pid 8659 signalled to continue
+8659 C CLIENT: received response: {pid=8659  name="Steven Jensen" email="sjensen@cs.umn.edu"}
+8659 E SERVER: 8659 completion
+8658 B SERVER: received request {pid=8658  name="George Karypis" }
+8658 B SERVER: filling request {pid=8658  name="George Karypis"  email="karypis@cs.umn.edu" }
+8658 B SERVER: signaling pid 8658
+8659 D CLIENT: pid 8659 indicating completion
+8658 B CLIENT: pid 8658 signalled to continue
+8658 C CLIENT: received response: {pid=8658  name="George Karypis" email="karypis@cs.umn.edu"}
+8658 E SERVER: 8658 completion
+8658 D CLIENT: pid 8658 indicating completion
+8665 B SERVER: received request {pid=8665  name="Michael Steinbach" }
+8665 B SERVER: filling request {pid=8665  name="Michael Steinbach"  email="steinbac@cs.umn.edu" }
+8665 B SERVER: signaling pid 8665
+8665 B CLIENT: pid 8665 signalled to continue
+8665 C CLIENT: received response: {pid=8665  name="Michael Steinbach" email="steinbac@cs.umn.edu"}
+8665 E SERVER: 8665 completion
+8657 B SERVER: received request {pid=8657  name="Dan Knights" }
+8657 B SERVER: filling request {pid=8657  name="Dan Knights"  email="knights@cs.umn.edu" }
+8657 B SERVER: signaling pid 8657
+8665 D CLIENT: pid 8665 indicating completion
+8657 B CLIENT: pid 8657 signalled to continue
+8657 C CLIENT: received response: {pid=8657  name="Dan Knights" email="knights@cs.umn.edu"}
+8657 E SERVER: 8657 completion
+8662 B SERVER: received request {pid=8662  name="Catherine Qi Zhao" }
+8662 B SERVER: filling request {pid=8662  name="Catherine Qi Zhao"  email="qzhao@umn.edu" }
+8662 B SERVER: signaling pid 8662
+8657 D CLIENT: pid 8657 indicating completion
+8662 B CLIENT: pid 8662 signalled to continue
+8662 C CLIENT: received response: {pid=8662  name="Catherine Qi Zhao" email="qzhao@umn.edu"}
+8662 E SERVER: 8662 completion
+8662 D CLIENT: pid 8662 indicating completion
+8661 B SERVER: received request {pid=8661  name="Michael W. Whalen" }
+8661 B SERVER: filling request {pid=8661  name="Michael W. Whalen"  email="whalen@cs.umn.edu" }
+8661 B SERVER: signaling pid 8661
+8661 B CLIENT: pid 8661 signalled to continue
+8661 C CLIENT: received response: {pid=8661  name="Michael W. Whalen" email="whalen@cs.umn.edu"}
+8661 E SERVER: 8661 completion
+8663 B SERVER: received request {pid=8663  name="Dan Challou" }
+8663 B SERVER: filling request {pid=8663  name="Dan Challou"  email="challou@cs.umn.edu" }
+8663 B SERVER: signaling pid 8663
+8661 D CLIENT: pid 8661 indicating completion
+8663 B CLIENT: pid 8663 signalled to continue
+8663 C CLIENT: received response: {pid=8663  name="Dan Challou" email="challou@cs.umn.edu"}
+8663 D CLIENT: pid 8663 indicating completion
+8663 E SERVER: 8663 completion
+8656 B SERVER: received request {pid=8656  name="Chris Dovolis" }
+8656 B SERVER: filling request {pid=8656  name="Chris Dovolis"  email="dovolis@cs.umn.edu" }
+8656 B SERVER: signaling pid 8656
+8656 B CLIENT: pid 8656 signalled to continue
+8656 C CLIENT: received response: {pid=8656  name="Chris Dovolis" email="dovolis@cs.umn.edu"}
+8656 E SERVER: 8656 completion
+8655 B SERVER: received request {pid=8655  name="Amy Larson" }
+8655 B SERVER: filling request {pid=8655  name="Amy Larson"  email="larson@cs.umn.edu" }
+8655 B SERVER: signaling pid 8655
+8656 D CLIENT: pid 8656 indicating completion
+8655 B CLIENT: pid 8655 signalled to continue
+8655 C CLIENT: received response: {pid=8655  name="Amy Larson" email="larson@cs.umn.edu"}
+8655 E SERVER: 8655 completion
+8669 B SERVER: received request {pid=8669  name="James Parker" }
+8669 B SERVER: filling request {pid=8669  name="James Parker"  email="jparker@cs.umn.edu" }
+8669 B SERVER: signaling pid 8669
+8655 D CLIENT: pid 8655 indicating completion
+8669 B CLIENT: pid 8669 signalled to continue
+8669 C CLIENT: received response: {pid=8669  name="James Parker" email="jparker@cs.umn.edu"}
+8669 E SERVER: 8669 completion
+8669 D CLIENT: pid 8669 indicating completion

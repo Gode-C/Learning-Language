@@ -1,0 +1,94 @@
+                           __________________
+
+                            LAB 05 QUESTIONS
+                           __________________
+
+
+- Name: Cyrus Chen
+- NetID: chen3736
+
+Answer the questions below according to the lab specification. Write
+your answers directly in this text file and submit it to complete Lab01.
+
+
+PROBLEM 1 `dirops.c'
+====================
+
+A
+~
+
+    It read all the files in the directory, print them along with their size.
+    It identify the largest file, then make a copy of it.
+
+
+B
+~
+  
+      opendir() used to open the current directory within the program
+      readdir() used to read next directory entry
+        
+      opendir() call work like open, but a directory instead of a file,
+      then readir() is called to read what's in the directory, since it
+      return the next entry whis the given repository like read()
+      It return NULL when reaching the end of error.
+      
+
+
+C
+~
+  
+     stat() returns information of a file in the buffer pointed by the second
+     argument. returns a stat structure, one field  of stat structure st_size
+     tells the total bytes.
+
+
+
+D
+~
+
+      readable by the group as well as the user:
+      ,----
+      | mode_t perms = S_IRUSR | S_IWUSR | S_IRGRP;
+      | fchmod outfd(outfd, perms);
+      `----
+  
+      /Optional challenge, set as orginal file:
+      ,----
+      |    stat(max_name, &sb);
+      |    mode_t perms = sb.st_mode;
+      |    fchmod outfd(outfd, perms);
+      `----
+
+E
+~
+
+  `dirops.c' contains a subtle bug in the following bit of code towards
+  the end of the file.
+  ,----
+  |   while( (nbytes = read(infd, buf, BUFSIZE)) > 0){
+  |     write(outfd, buf, BUFSIZE);
+  |   }
+  `----
+          ------------------------Ans--------------------------------    
+          
+    The third argument passed to write() call states how many bytes it writes to
+    the file. The read() only over written part of the buffer at the last loop
+    it runs, because the bytes left won't fill up a buffer we defined.
+    If we still write a whole buffer it means part of the buffer contains old 
+    stuff from last read() call. So we should only write as much as we read .
+    
+    fix:
+    
+  ,----
+  |   while( (nbytes = read(infd, buf, BUFSIZE)) > 0){
+  |     write(outfd, buf, nbytes);
+  |   }
+  `----
+    
+    
+    
+    
+    
+    
+    
+

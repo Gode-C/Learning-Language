@@ -1,0 +1,170 @@
+                           __________________
+
+                            LAB 06 QUESTIONS
+                           __________________
+
+
+- Name: Cyrus Chen
+- NetID: chen3736
+
+Answer the questions below according to the lab specification. Write
+your answers directly in this text file and submit it to complete Lab01.
+
+
+PROBLEM 1 `birth_death.c'
+=========================
+
+A
+~
+
+ Run it like
+  ,----
+  | $> ./birth_death ./circle_of_life 4
+  `----
+
+
+    Nants ingonyama bagithi baba
+    Sithi uhm ingonyama
+    Nants ingonyama bagithi baba
+    Sithi uhm ingonyama
+    kill result: 0
+    child process 78483 terminated with signal 2
+
+B
+~
+
+    1 determine the system call uses to send signals 
+    2 explain which signal is being sent.
+
+    int result = kill(pid,SIGINT);          
+
+    The signel SIGINT is being sent, it is the interrupt signel worl like 
+    ctrl + c in command line.
+
+
+C
+~
+
+
+      if(WIFSIGNALED(status)){                   
+        printf("child process %d terminated with signal %d\n",
+               pid,WTERMSIG(status));
+      }
+
+
+    WIFSIGNALED() returns true if the child process was terminated by a signal,
+    it is used here to determine if a process is ended by a sigbnel.
+
+    ps:WTERMSIG() returns the signel terminated the process.
+
+D
+~
+
+  Compile the program `no_interruptions.c' and run it with
+  `birth_death'. Show your results below.
+
+  Note that you may need to send signals to `no_interruptions' to
+  forcibly end it. The `pkill' command is useful for this as in
+  ,----
+  | pkill no_inter        # send TERM signal to proc name matching "no_inter"
+  | pkill -KILL no_inter  # send KILL signal to proc name matching "no_inter"
+  `----
+
+
+
+    Ma-na na-na!
+    Ma-na na-na!
+    Ma-na na-na!
+    Ma-na na-na!
+    ^C
+    No SIGINT-erruptions allowed.
+    ^Z
+    [1]+  Stopped                 ./a.out
+    $ pkill a.out
+    $ fg
+    ./a.out
+    Try to SIGTERM me? Piss off!
+    Ma-na na-na!
+    ^Z
+    [1]+  Stopped                 ./a.out
+    $ pkill a.out
+    $ pkill -KILL a.out
+    [1]+  Killed                  ./a.out
+
+
+E
+~
+
+  Examine the `no_interruptions.c' code and describe how it is able to
+  avoid being killed when receiving the interrupt and TERM signals. Show
+  the lines of code used to accomplish this signal handling.
+  
+  
+    signal(SIGINT, handle_SIGINT); 
+    signal(SIGTERM, handle_SIGTERM); 
+    
+    signal() changes the action when reciving the giving signal, it is here set
+    to the void functions and do nothing but print something out.
+  
+
+
+PROBLEM 2 `start_stop.c'
+========================
+
+A
+~
+
+  ,----
+  | $> ./start_stop ./circle_of_life 3
+  `----
+    Nants ingonyama bagithi baba
+    Sithi uhm ingonyama
+    Nants ingonyama bagithi baba
+    SIGSTOP result: 0
+    SIGCONT result: 0
+    Sithi uhm ingonyama
+    Ingonyama
+    Siyo Nqoba
+    SIGSTOP result: 0
+    SIGCONT result: 0
+    Ingonyama Ingonyama nengw' enamabala 
+    From the day we arrive on the planet
+    ^C
+
+
+B
+~
+
+  Describe at a high level the effect that `start_stop' has on a child
+  process it runs
+
+    It is a loop that make the child run for a period of time, then pause
+    it by sending SIGSTOP, after a period of time, let the child continue
+    to run by sending SIGCONT. loop will break when the child finishes.
+
+C
+~
+
+  Examine the source code of `start_stop.c' and determine the types of
+  signals it uses to alter behavior of its child process and paste the
+  corresponding lines of code below.
+
+    result = kill(pid,SIGSTOP);         
+    result = kill(pid,SIGCONT);    
+
+    SIGSTOP pause the child process at the current state, and SIGCONT is
+    used to resume the child process.
+
+D
+~
+
+  The program `no_interruptions.c' establishes signal handlers for some
+  signals allowing it to ignore signals that would normally terminate a
+  process. Investigate whether it is possible to similarly ignore the
+  signal used by `start_stop' to pause its child process. Hint: Consider
+  the provided program `cant_catch_sigstop.c' and run it with
+  `start_stop'.
+  
+
+  No, SIGKILL and SIGSTOP cannot be caught, blocked, or ignored.
+  they are handled by kernel.

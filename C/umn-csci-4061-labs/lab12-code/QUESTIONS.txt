@@ -1,0 +1,148 @@
+                           __________________
+
+                            LAB 12 QUESTIONS
+                           __________________
+
+
+- Name: Cyrus Chen
+- NetID: chen3736
+
+Answer the questions below according to the lab specification. Write
+your answers directly in this text file and submit it to complete Lab01.
+
+
+Problem 1 `text2bin.c'
+======================
+
+  Examine the source code for `text2bin.c' which is meant to read a text
+  file such as `stocks-10.txt' and generate binary output to produce
+  binary files such as `stocks-10.dat'. Compile and run the program to
+  create files in the following way:
+  ,----
+  | ./text2bin stocks-10.txt x.dat
+  `----
+
+  Describe the specific system call used to *write* binary
+  data. Describe whether binary files produced are human readable using
+  text tools like `cat' or a text editor.
+  
+  
+  
+  write(out_fd, &stock, sizeof(stock_t));
+  The binary file is not human readable.
+  
+  
+  
+
+
+PROBLEM 2 `bin2text.c'
+======================
+
+  Examine the source code for `bin2text.c' which is meant to read a
+  binary file such as `stocks-10.dat'. Compile this program using the
+  provided `Makefile' and run it on `stocks-10.dat' as in
+  ,----
+  | ./bin2text stocks-10.dat
+  `----
+
+  Describe the specific system call used to read binary data and how it
+  is stored into variables/memory in the program.
+
+    read from file:
+    int nbytes = read(in_fd, &stock, sizeof(stock_t));
+    Ths second argument is where to store the data.
+
+
+
+
+
+
+PROBLEM 3 `specific_stock.c'
+============================
+
+  Examine the source code for `specific_stock.c' which is also meant to
+  read a binary file such as `stocks-10.dat' but takes a 2 inputs, a
+  file and number, and produces slightly different output. Compile this
+  program using the provided `Makefile' and run it on `stocks-10.dat'
+  trying different number arguments such as
+  ,----
+  | ./specific_stock stocks-10.dat 0
+  | ./specific_stock stocks-10.dat 5
+  | ./specific_stock stocks-10.dat 17
+  `----
+
+
+A
+~
+
+  A naive technique to find a specific location in a file is to use a
+  loop as in.
+  ,----
+  | for(int i=0; i<some_num; i++){
+  |   read(..); // move ahead in file
+  | }
+  `----
+  When files are comprised of identically sized elements such as the
+  binary stock files, system calls can yield higher efficiency.
+
+  Describe the system call that is used in `specific_stock.c' to jump
+  immediately to a stock of interest. Describe the arguments of this
+  call and how they are calculated.
+
+
+  off_t pos = lseek(in_fd, offset, SEEK_SET);
+    lseek() is used to repositions the file offset. first argument
+    is the file descriptor, second is the size of offset, third determins 
+    where to go:
+        
+       SEEK_SET
+              file offset = offset bytes.
+       SEEK_CUR
+              file offset =  current location plus offset
+              bytes.
+       SEEK_END
+              file offset = size of the file plus offset bytes.
+
+
+
+
+B
+~
+
+  `specific_stock' checks that the stock requested is "in bounds" - not
+  beyond the end of the file implementing the following behavior:
+  ,----
+  | $> ./specific_stock stocks-10.dat 17
+  | Off end of file
+  `----
+
+  Describe the technique and additional system call that is used to
+  accomplish this. Mention how the return value of `lseek()' is used.
+
+    fstat(in_fd, &stat_buf);
+    get information of a file, so we can know the size of the file.
+    lseek() returns the size of offset location from the beginning of the
+    file in bytes. If it is greater than the file size, it is out of bounds.
+
+
+
+C
+~
+
+  Examine the manual page for `lseek()'. Suggest how one might
+  accomplish the following tasks.
+  - Move the position of a file descriptor to the end of a file so that
+    subsequent writes append to the file
+  - Immediately read the last stock in a binary stock file
+  Both of these may be useful in a project.
+  
+  use SEEK_END as the third argument, then it will move to the end of file +
+  offset. Use 0 for end of file, and -sizeof(stock_t) for the last binary stock.
+  
+  
+  
+  
+  
+  
+  
+  
